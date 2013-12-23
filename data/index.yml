@@ -1,0 +1,76 @@
+---
+banner:
+  title: "Make system packages, not war."
+  subtitle: "If you can say \"Works on my machine!\", you can create shippable system packages."
+  button:
+    text: "Learn More"
+    url: "#"
+  img: "http://placehold.it/300x300.png&text={hash}"
+
+problem:
+  - "Tired of using configuration management to automate pulling source & redundantly building your software (multiplied times N number of nodes)? With the Packager now you don't have to. Simply tell Packager which platforms you need packages for and provide a list of dependencies, and out comes a package (.deb or .rpm)."
+
+features:
+  -
+    icon: "fa-edit"
+    title: "Configure."
+    content: "You already know what dependencies are required to make your code run on your laptop, just tell us what they are and we'll do the rest."
+    url: "#configure"
+
+  -
+    icon: "fa-code-fork"
+    title: "Branch."
+    content: "Create a `package` branch. Any commits pushed to this branch will fire off automated package builds."
+    url: "#branch"
+
+  -
+    icon: "fa-cloud-upload"
+    title: "Push."
+    content: "Commit your changes, push them up to GitHub, we'll do the rest."
+    url: "#push"
+
+  -
+    icon: "fa-gift"
+    title: "Enjoy."
+    content: "Packager will push packages to the Releases section of your GitHub repo & notify you by email when your packages are ready to use."
+    url: "#enjoy"
+
+
+
+solution:
+  -
+    id: "configure"
+    nav: "Configure"
+    img: "http://placehold.it/500x500.png&text={example}"
+    title: "Add a .packager file to your project"
+    subtitle: "Just describe your dependencies in a simple json file, we'll do the rest."
+    content:
+      - ""
+
+  -
+    id: "branch"
+    nav: "Branch"
+    img: "http://placehold.it/500x500.png&text={example}"
+    title: "It's so easy."
+    subtitle: ""
+    content:
+      - ""
+
+  -
+    id: "push"
+    nav: "Push"
+    img: "http://placehold.it/500x500.png&text={example}"
+    title: "Just do this."
+    subtitle: ""
+    content:
+      - ""
+
+  -
+    id: "enjoy"
+    nav: "enjoy"
+    img: "http://placehold.it/500x500.png&text={example}"
+    title: "Stuff happens."
+    subtitle: ""
+    content:
+      - ""
+
