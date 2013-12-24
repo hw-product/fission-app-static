@@ -5,10 +5,10 @@ banner:
   button:
     text: "Learn More"
     url: "#"
-  img: "http://placehold.it/300x300.png&text={hash}"
+  img: "http://placehold.it/300x300.png&text={ example DSL }"
 
 problem:
-  - "Tired of using configuration management to automate pulling source & redundantly building your software (multiplied times N number of nodes)? With the Packager now you don't have to. Simply tell Packager which platforms you need packages for and provide a list of dependencies, and out comes a package (.deb or .rpm)."
+  - "The package manager exists for a reason. If you're using configuration management to fetch source files to build binaries and/or run scripts locally you're doing it wrong."
 
 features:
   -
@@ -35,30 +35,58 @@ features:
     content: "Packager will push packages to the Releases section of your GitHub repo & notify you by email when your packages are ready to use."
     url: "#enjoy"
 
-
-
 solution:
   -
     id: "configure"
-    nav: "Configure"
-    img: "http://placehold.it/500x500.png&text={example}"
     title: "Add a .packager file to your project"
     subtitle: "Just describe your dependencies in a simple json file, we'll do the rest."
     content:
       - ""
+    img: "http://placehold.it/500x500.png&text={example}"
+    code: 
+      lang: "ruby"
+      content: |
+        # -*- mode: ruby -*-
+        # -*- encoding: utf-8 -*-
+
+        Packager.build do
+          target do
+            platform 'ubuntu'
+            version '12.04'
+            package 'deb'
+            arch 'amd64'
+          end
+          dependencies do
+            runtime ['libc6']
+          end
+          build do
+            name 'hw-redis'
+            template :generic
+            commands do
+              build [
+                'make',
+                'make PREFIX=$PKG_DIR/usr/local install'
+              ]
+            end
+          end
+        end
 
   -
     id: "branch"
-    nav: "Branch"
     img: "http://placehold.it/500x500.png&text={example}"
     title: "It's so easy."
     subtitle: ""
     content:
       - ""
+    code: 
+      lang: "shell"
+      content: |
+        git checkout -b packages
+        git commit -m 'cut a package!'
+        git push origin packages
 
   -
     id: "push"
-    nav: "Push"
     img: "http://placehold.it/500x500.png&text={example}"
     title: "Just do this."
     subtitle: ""
@@ -67,7 +95,6 @@ solution:
 
   -
     id: "enjoy"
-    nav: "enjoy"
     img: "http://placehold.it/500x500.png&text={example}"
     title: "Stuff happens."
     subtitle: ""
