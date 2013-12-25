@@ -1,4 +1,21 @@
 ---
+app: "Packager"
+nav:
+  - name: "Home"
+    url: "#top"
+
+  - name: "Configure"
+    url: "#configure"
+
+  - name: "Branch"
+    url: "#branch"
+
+  - name: "Push"
+    url: "#push"
+
+  - name: "Repo"
+    url: "#repo"
+
 banner:
   title: "Make system packages, not war."
   subtitle: "If you can say \"Works on my machine!\", you can create shippable system packages."
@@ -11,33 +28,28 @@ problem:
   - "The package manager exists for a reason. If you're using configuration management to fetch source files to build binaries and/or run scripts locally you're doing it wrong."
 
 features:
-  -
-    icon: "fa-edit"
+  - icon: "fa-edit"
     title: "Configure."
     content: "You already know what dependencies are required to make your code run on your laptop, just tell us what they are and we'll do the rest."
     url: "#configure"
 
-  -
-    icon: "fa-code-fork"
+  - icon: "fa-code-fork"
     title: "Branch."
     content: "Create a `package` branch. Any commits pushed to this branch will fire off automated package builds."
     url: "#branch"
 
-  -
-    icon: "fa-cloud-upload"
+  - icon: "fa-cloud-upload"
     title: "Push."
     content: "Commit your changes, push them up to GitHub, we'll do the rest."
     url: "#push"
 
-  -
-    icon: "fa-gift"
-    title: "Enjoy."
+  - icon: "fa-gift"
+    title: "Repo."
     content: "Packager will push packages to the Releases section of your GitHub repo & notify you by email when your packages are ready to use."
-    url: "#enjoy"
+    url: "#repo"
 
 solution:
-  -
-    id: "configure"
+  - id: "configure"
     title: "Add a .packager file to your project"
     subtitle: "Just describe your dependencies in a simple json file, we'll do the rest."
     content:
@@ -71,8 +83,7 @@ solution:
           end
         end
 
-  -
-    id: "branch"
+  - id: "branch"
     img: "http://placehold.it/500x500.png&text={example}"
     title: "It's so easy."
     subtitle: ""
@@ -85,19 +96,16 @@ solution:
         git commit -m 'cut a package!'
         git push origin packages
 
-  -
-    id: "push"
+  - id: "push"
     img: "http://placehold.it/500x500.png&text={example}"
     title: "Just do this."
     subtitle: ""
     content:
       - ""
 
-  -
-    id: "enjoy"
+  - id: "enjoy"
     img: "http://placehold.it/500x500.png&text={example}"
     title: "Stuff happens."
     subtitle: ""
     content:
       - ""
-
