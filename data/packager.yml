@@ -28,84 +28,87 @@ problem:
   - "The package manager exists for a reason. If you're using configuration management to fetch source files to build binaries and/or run scripts locally you're doing it wrong."
 
 features:
-  - icon: "fa-edit"
-    title: "Configure."
-    content: "You already know what dependencies are required to make your code run on your laptop, just tell us what they are and we'll do the rest."
-    url: "#configure"
+  style: "row_list"
+  items:
+    - icon: "fa-edit"
+      title: "Configure."
+      content: "You already know what dependencies are required to make your code run on your laptop, just tell us what they are and we'll do the rest."
+      url: "#configure"
 
-  - icon: "fa-code-fork"
-    title: "Branch."
-    content: "Create a `package` branch. Any commits pushed to this branch will fire off automated package builds."
-    url: "#branch"
+    - icon: "fa-code-fork"
+      title: "Branch."
+      content: "Create a `package` branch. Any commits pushed to this branch will fire off automated package builds."
+      url: "#branch"
 
-  - icon: "fa-cloud-upload"
-    title: "Push."
-    content: "Commit your changes, push them up to GitHub, we'll do the rest."
-    url: "#push"
+    - icon: "fa-cloud-upload"
+      title: "Push."
+      content: "Commit your changes, push them up to GitHub, we'll do the rest."
+      url: "#push"
 
-  - icon: "fa-gift"
-    title: "Repo."
-    content: "Packager will push packages to the Releases section of your GitHub repo & notify you by email when your packages are ready to use."
-    url: "#repo"
+    - icon: "fa-gift"
+      title: "Repo."
+      content: "Packager will push packages to the Releases section of your GitHub repo & notify you by email when your packages are ready to use."
+      url: "#repo"
 
 solution:
-  - id: "configure"
-    title: "Add a .packager file to your project"
-    subtitle: "Just describe your dependencies in a simple json file, we'll do the rest."
-    content:
-      - ""
-    img: "http://placehold.it/500x500.png&text={example}"
-    code: 
-      lang: "ruby"
-      content: |
-        # -*- mode: ruby -*-
-        # -*- encoding: utf-8 -*-
+  items:
+    - id: "configure"
+      title: "Add a .packager file to your project"
+      subtitle: "Just describe your dependencies in a simple json file, we'll do the rest."
+      content:
+        - ""
+      img: "http://placehold.it/500x500.png&text={example}"
+      code:
+        lang: "ruby"
+        content: |
+          # -*- mode: ruby -*-
+          # -*- encoding: utf-8 -*-
 
-        Packager.build do
-          target do
-            platform 'ubuntu'
-            version '12.04'
-            package 'deb'
-            arch 'amd64'
-          end
-          dependencies do
-            runtime ['libc6']
-          end
-          build do
-            name 'hw-redis'
-            template :generic
-            commands do
-              build [
-                'make',
-                'make PREFIX=$PKG_DIR/usr/local install'
-              ]
+          Packager.build do
+            target do
+              platform 'ubuntu'
+              version '12.04'
+              package 'deb'
+              arch 'amd64'
+            end
+            dependencies do
+              runtime ['libc6']
+            end
+            build do
+              name 'hw-redis'
+              template :generic
+              commands do
+                build [
+                  'make',
+                  'make PREFIX=$PKG_DIR/usr/local install'
+                ]
+              end
             end
           end
-        end
 
-  - id: "branch"
-    img: "http://placehold.it/500x500.png&text={example}"
-    title: "It's so easy."
-    subtitle: ""
-    content:
-      - ""
-    code: 
-      lang: "shell"
-      content: |
-        git checkout -b packages
-        git commit -m 'cut a package!'
-        git push origin packages
+    - id: "branch"
+      img: "http://placehold.it/500x500.png&text={example}"
+      title: "It's so easy."
+      subtitle: ""
+      content:
+        - ""
+      code:
+        lang: "shell"
+        content: |
+          git checkout -b packages
+          git commit -m 'cut a package!'
+          git push origin packages
 
-  - id: "push"
-    img: "http://placehold.it/500x500.png&text={example}"
-    title: "Just do this."
-    subtitle: ""
-    content:
-      - ""
+    - id: "push"
+      img: "http://placehold.it/500x500.png&text={example}"
+      title: "Just do this."
+      subtitle: ""
+      content:
+        - ""
 
-  - id: "enjoy"
-    img: "http://placehold.it/500x500.png&text={example}"
-    title: "Stuff happens."
-    subtitle: ""
-    content:
-      - ""
+    - id: "enjoy"
+      img: "http://placehold.it/500x500.png&text={example}"
+      title: "Stuff happens."
+      subtitle: ""
+      content:
+        - ""
