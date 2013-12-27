@@ -13,6 +13,8 @@ class StaticController < ApplicationController
         key = (params[:path] || 'index').sub(%r{^/}, '')
         if(entry = @pages[key])
           @content = entry[:content]
+          @nav = entry.delete(:nav)
+          @app_name = entry.delete(:app)
         else
           # TODO: Needs proper 404ing
           flash[:error] = 'Requested page not found'
