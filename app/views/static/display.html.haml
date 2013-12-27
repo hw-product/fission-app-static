@@ -2,7 +2,7 @@
   - begin
     - render partial: "static/#{key}"
   - rescue
-    - render partial: 'static/default'
+    - render partial: 'static/default', locals: {key: key, value: value}
   - end
 
   %hr
