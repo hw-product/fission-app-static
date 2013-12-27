@@ -1,8 +1,14 @@
 - @content.each do |key, value|
-  - begin
-    - render partial: "static/#{key}"
-  - rescue
-    - render partial: 'static/default', locals: {key: key, value: value}
+  - partials = value.is_a?(Hash) && style = value[:style] ? [style.include?('/') ? style : "static/#{style}"] : []
+  - partials += ["static/#{key}", 'static/default']
+  - partials.each do |content_partial|
+    - begin
+      - render partial: content_partial, locals: {key: key, value: value}
+      - break
+    - rescue => e
+      - Rails.logger.error '*' * 20
+      - Rails.logger "CATCH TYPE: #{e.class}"
+    - end
   - end
 
   %hr

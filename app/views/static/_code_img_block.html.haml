@@ -1,4 +1,4 @@
-%div.col-sm-5
+%div{class: "col-sm-#{defined?(width) ? width : 5}"}
   - if code
     %div
       %pre.highlight{class: code[:lang]}= code[:content]

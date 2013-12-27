@@ -1,14 +1,17 @@
 %div{id: key}
   %div.container
-    - if value[:style]
-      - render partial: value[:style].include?('/') ? value[:style] : "static/#{value[:style]}", :locals => {name: key, items => value[:items]}
+    - if value.is_a?(Hash)
+      - if value[:style]
+        - render partial: value[:style].include?('/') ? value[:style] : "static/#{value[:style]}", :locals => {name: key, items => value[:items]}
+      - else
+        - [value[:items]].flatten.each_with_index do |step, idx|
+          - if idx % 2 == 0
+            - render partial: 'static/code_img_block', locals: {code: step[:code], image: step[:img]}
+            - render partial: 'static/content_block', locals: {item: step}
+          - else
+            - render partial: 'static/code_img_block', locals: {code: step[:code], image: step[:img]}
+            - render partial: 'static/content_block', locals: {item: step}
+          -end
+      - end
     - else
-      - value[:items].each_with_index do |step, idx|
-        - if idx % 2 == 0
-          - render partial: 'static/code_img_block', locals: {code: step[:code], image: step[:img]}
-          - render partial: 'static/content_block', locals: {item: step}
-        - else
-          - render partial: 'static/code_img_block', locals: {code: step[:code], image: step[:img]}
-          - render partial: 'static/content_block', locals: {item: step}
-        -end
-    - end
+      %p= value
