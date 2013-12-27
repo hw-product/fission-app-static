@@ -1,0 +1,12 @@
+// A row of featurettes or product highlights
+// Requires an array of hashes containing {url: "", icon: "", title: "", content: ""}
+
+- col = "col-sm-#{12 / items.size}"
+%div.row
+  - items.each do |item|
+    %div.feature{ class: col }
+      %div.icon
+        %a.animate{ href: item[:url] }
+          %i.fa.fa-5x{ class: item[:icon] }
+      %h3= item[:title]
+      %p= item[:content]

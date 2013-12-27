@@ -1,0 +1,10 @@
+%div.row
+  %div.col-sm-8
+    %h2!= value[:title]
+    %p!= value[:subtitle]
+    %a{ href: value[:button][:url] }
+      %div.fission-button{ type: "button" }
+        = value[:button][:text]
+        %i.fa.fa-arrow-circle-right
+
+  = render partial: 'static/code_img_block', locals: {code: value[:code], image: value[:img], width: 4}
