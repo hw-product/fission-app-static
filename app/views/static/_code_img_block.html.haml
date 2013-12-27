@@ -1,0 +1,6 @@
+%div.col-sm-5
+  - if code
+    %div
+      %pre.highlight{class: code[:lang]}= code[:content]
+  - else
+    %img{src: image}
