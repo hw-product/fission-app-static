@@ -7,4 +7,4 @@
         = value[:button][:text]
         %i.fa.fa-arrow-circle-right
 
-  - render partial: 'static/code_img_block', locals: {code: value[:code], img: code[:img], width: 4}
+  = render partial: 'static/code_img_block', locals: {code: value[:code], image: value[:img], width: 4}

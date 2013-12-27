@@ -1,14 +1,11 @@
 - @content.each do |key, value|
-  - partials = value.is_a?(Hash) && style = value[:style] ? [style.include?('/') ? style : "static/#{style}"] : []
+  - partials = (value.is_a?(Hash) && style = value[:style]) ? [style.include?('/') ? style : "static/#{style}"] : []
   - partials += ["static/#{key}", 'static/default']
   - partials.each do |content_partial|
     - begin
-      - render partial: content_partial, locals: {key: key, value: value}
+      %div{class: key}
+        %div.container= render partial: content_partial, locals: {key: key, value: value, items: value.is_a?(Hash) ? value[:items] : []}
+      %hr
       - break
-    - rescue => e
-      - Rails.logger.error '*' * 20
-      - Rails.logger "CATCH TYPE: #{e.class}"
-    - end
-  - end
-
-  %hr
+    - rescue ActionView::MissingTemplate => e
+      - Rails.logger.debug "Load attempt of template failed: #{e}"
