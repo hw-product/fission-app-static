@@ -4,8 +4,8 @@
     = render partial: value[:style].include?('/') ? value[:style] : "static/#{value[:style]}", :locals => {name: key, items => value[:items]}
   - else
     - [value[:items]].flatten.each_with_index do |step, idx|
-      %div.row
-        %div.step.navfix{id: step[:id]}
+      %div.step.navfix{id: step[:id]}
+        %div.row
           - if idx % 2 == 0
             = render partial: 'static/content_block', locals: {item: step}
             = render partial: 'static/code_img_block', locals: {code: step[:code], image: step[:img]}
@@ -17,3 +17,4 @@
     %p!= content
 - else
   %p!= value
+%div.container.navfix
