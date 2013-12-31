@@ -149,7 +149,8 @@ solution:
       content:
         - "Packager delivers lightweight system packages directly to <a href='https://github.com/blog/1547-release-your-software'>Github releases</a>. Optionally, you can choose to have us host a private package repository that Packager will maintain, making fresh system packages readily available to install with an <code>apt-get update && apt-get upgrade</code> or a <code>yum check-update && yum upgrade</code>."
         - "Yes, Packager supports Debian (.deb) <em>and</em> Red Hat (.rpm) package formats!"
-        - "A recently popular approach to packaging software is to include all dependencies in single bloated package. While this approach may initially seem advantageous, it can quickly result in unwanted technical debt. This appears simpler at first but when multiple packages share dependencies it can lead to redundant software on a system, increased risk when software needs to be patched or upgraded, and significantly larger package sizes."
+        - "What's the difference between Packager packages and the recently popular software packaging trend to include all dependencies in single bloated package? While this approach may initially seem advantageous (because it reduces complexity up-front), it can quickly result in unwanted technical debt in the shape of redundant software on a system, increased risk exposure when software needs to be patched or upgraded, and significantly larger package sizes."
+        - "Don’t ship the world, ship lightweight system packages."
       code:
         lang: "shell"
         content: |
