@@ -1,0 +1,6 @@
+%div.container
+  %h1!= value[:title]
+  %h3!= value[:subtitle]
+  %p!= value[:smallprint]
+  %a.fission-button-big{ href: value[:button][:url] }
+    = value[:button][:text]

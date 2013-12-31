@@ -158,3 +158,12 @@ solution:
           apt-get update 
           apt-get install myapp
 
+calltoaction:
+  style: "calltoaction"
+  id: "#signup"
+  title: "Start your free trial <span class='under'>today</span>"
+  subtitle: "Sign-up in 60-seconds. Try for free for 30-days."
+  button: 
+    text: "See plans & pricing"
+    url: "/s/pricing"
+
