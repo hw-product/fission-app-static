@@ -25,7 +25,9 @@ banner:
   img: "http://placehold.it/300x300.png&text={ example DSL }"
 
 problem:
-  - "What if shipping software wasn't so hard? What if you could plug into a deployment pipeline that provided repeatable steps to get from development to production without so much fuss? Now you can. We call it a <strong>Composable Continuous Delivery Platform</strong>. It's made up of individual services that you can combine to help make shipping software less painful for your business:"
+  style: "bigquote"
+  content:
+    - "What if shipping software wasn't so hard? What if you could plug into a deployment pipeline that provided repeatable steps to get from development to production without so much fuss? Now you can. We call it a <strong>Composable Continuous Delivery Platform</strong>. It's made up of individual services that you can combine to help make shipping software less painful for your business:"
 
 features:
   style: "row_list"
