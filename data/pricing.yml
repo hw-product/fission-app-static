@@ -1,7 +1,7 @@
 ---
 nav:
   - name: "Home"
-    url: "/s/packager"
+    url: "/s/"
 
   - name: "Pricing"
     url: "#top"
@@ -10,7 +10,7 @@ nav:
 #   id: "#pricing"
 #   title: "Pricing"
 #   subtitle: "Pricing plans for every organization."
-#   desc: 
+#   desc:
 #     - "The first 30-days are free. Try now, pay later."
 
 calltoaction:
@@ -18,9 +18,9 @@ calltoaction:
   id: "#signup"
   title: "Start your free trial <span class='under'>today</span>"
   subtitle: "Sign-up in 60-seconds. Try for free for 30-days."
-  smallprint: 
+  smallprint:
     - "(We won't charge you until the trial ends.)"
-  button: 
+  button:
     url: "/auth/github"
     text: "Sign me up!"
     subtext: "90-second sign-up"
