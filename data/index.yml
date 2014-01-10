@@ -136,7 +136,7 @@ solution:
 
 
     - id: "package"
-      img: "http://imgs.xkcd.com/comics/compiling.png"
+      img: "/images/shutterstock_145054669.png"
       title: "Your time."
       subtitle: "Take a break while Packager works"
       content:
