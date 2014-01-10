@@ -1,86 +1,169 @@
 ---
-app: "DeployPipe"
+app: "Packager"
 nav:
   - name: "Home"
     url: "#top"
 
-  - name: "Build"
-    url: "#build"
+  - name: "Define"
+    url: "#define"
 
-  - name: "Test"
-    url: "#test"
+  - name: "Branch"
+    url: "#branch"
 
   - name: "Package"
     url: "#package"
 
-  - name: "Deploy"
-    url: "#deploy"
+  - name: "Release"
+    url: "#release"
+
+  - name: "Pricing"
+    url: "/s/pricing"
 
 banner:
-  title: "What's in your <small><span class='text-muted'>(software delivery)</span></small> pipe?"
-  subtitle: "Introducing the worlds first Composable Continuous Delivery Platform."
+  title: "Make system packages, not war."
+  subtitle: "Software-packaging-as-a-service"
+  desc:
+    - "Does manually installing software make you want to rage? Stop the fighting! If you can say \"Works on my machine!\", you can create shippable system packages."
   button:
     text: "Learn More"
-    url: "#build"
+    url: "#define"
   img: "http://placehold.it/300x300.png&text={ example DSL }"
+  code: 
+    lang: "json"
+    content: |
+      {
+        "target": {
+          "platform": 'ubuntu',
+          "version": '12.04',
+          "package": 'deb',
+          "arch": 'amd64'
+        },
+        "dependencies": {
+          "build": ['libpq-dev'],
+          "runtime": ['libpq5']
+        },
+        "build": {
+          "name": 'myapp',
+          "template": 'rails',
+          "install_prefix", '/var/www/myapp'
+        }
+      }
 
 problem:
   style: "bigquote"
   content:
-    - "What if shipping software wasn't so hard? What if you could plug into a deployment pipeline that provided repeatable steps to get from development to production without so much fuss? Now you can. We call it a <strong>Composable Continuous Delivery Platform</strong>. It's made up of individual services that you can combine to help make shipping software less painful for your business:"
+    - "You shouldn't need to use configuration management to fetch source files and build binaries on every production node. If you're doing this because making packages and maintaining a repository is too hard, now you don't have to."
 
 features:
   style: "row_list"
   items:
-    - icon: "fa-code"
-      title: "Build."
-      content: "Continuous integration without the continuous tinkering. Because CI should just work."
-      url: "#build"
+    - icon: "fa-edit"
+      title: "Define."
+      content: "You already know what dependencies are required to build & run your code on your laptop, just tell us what they are and we'll do the rest."
+      url: "#define"
 
-    - icon: "fa-flask"
-      title: "Test."
-      content: "Convergence testing, on multiple platforms. Because 'works on my machine' isn't actually that funny."
-      url: "#test"
+    - icon: "fa-code-fork"
+      title: "Branch."
+      content: "Any commits pushed to a branch of your choice can trigger automated package builds."
+      url: "#branch"
 
-    - icon: "fa-gift"
+    - icon: "fa-beer"
       title: "Package."
-      content: "Lightweight packages that don't include the kitchen sink. Stop shipping dependencies. Just ship your software."
+      content: "Commit your changes, push them up to GitHub, and go have a beer (you've earned it)."
       url: "#package"
 
-    - icon: "fa-cloud-upload"
-      title: "Deploy."
-      content: "Don't deploy, scale. From a commit-hook. On AWS, Rackspace, or your OpenStack-powered private-cloud."
-      url: "#deploy"
+    - icon: "fa-gift"
+      title: "Release."
+      content: "Packager will push packages to the Releases section of your GitHub repo & notify you by email when your packages are ready to use."
+      url: "#release"
 
 solution:
   items:
-    - id: "build"
-      img: "http://placehold.it/500x500.png&text={example}"
-      title: "Painless Automated Builds"
-      subtitle: "Because no one really likes <del>configuring</del> Jenkins."
+    - id: "define"
+      title: "Your code."
+      subtitle: "Add a <code>.packager</code> file & describe your package(s)"
       content:
-        - "By definition, the word 'continuous' infers an unbroken stream; without interruption. In the context of <strong>continuous integration</strong> (CI) in software development, this 'stream' should be the developers workflow. Unfortunately, most CI tools introduce a significant interruption in workflow; requiring constant configuration and maintenance."
-        - "The DeployPipe CI service is called <strong>Nellie</strong>. It allows you to trigger the execution of any number of arbitrary builds and/or application tests via a simple DSL."
+        - "Packager is a single purpose <abbr title='Continuous Integration'>CI</abbr> service that responds to GitHub webhooks. The <code>.packager</code> configuration file can be written in a simple DSL or JSON and lives in source control alongside your code. Packager can even build multiple dependent packages from a single config file, or - if you’re really crazy - an entire tree of dependent packages."
+        - "Do you need to build a custom runit package that your Rails application depends on? We got that."
+        - "Packager has several pre-existing definitions to simplify packaging for common application types. Currently supported templates: <code>:rails</code> for Rails applications, <code>:erlang</code> for Erlang applications, and a <code>:generic</code> default template for everything else. Need something specific? <a href='mailto:support@packager.co'>Ask us!</a>"
+      img: "http://placehold.it/500x500.png&text={example}"
+      code:
+        lang: "ruby"
+        content: |
+          # -*- mode: ruby -*-
+          # -*- encoding: utf-8 -*-
+          Packager.build do
+            target do
+              platform 'ubuntu'
+              version '12.04'
+              package 'deb'
+              arch 'amd64'
+            end
+            dependencies do
+              build ['libpq-dev']
+              runtime ['libpq5']
+            end
+            configure do
+              environment 'production'
+            end
+            build do
+              name 'myapp'
+              template :rails
+              install_prefix '/var/www/myapp'
+              commands do
+                after.build [
+                  'rake middleman'
+                ]
+              end
+            end
+          end
 
-    - id: "test"
+    - id: "branch"
       img: "http://placehold.it/500x500.png&text={example}"
-      title: "Test all the things."
-      subtitle: "Full stack integration tests, on multiple architectures, as a service."
+      title: "Your existing workflow."
+      subtitle: "No need to panic, Packager works with what you already do."
       content:
-        - "All the application testing in the world won't do any good if the infrastructure it is deployed onto hasn't been tested."
-        - "How often are software bugs actually related to a missing dependency, or a dependency conflict? How often are the 'works on my machine' issues a result of a flaw in the application deployment process?"
-        - "No <em>true</em> continuous delivery pipeline would be complete without automated tests, and those test couldn't be considered comprehensive enough to depend on without infrastructure testing."
+        - "If your organization already maintains a branch that represents stable, production-ready code, Packager can continuously build releases from this branch. Alternatively, you can use a dedicated branch to package releases on-demand."
+        - "Creating a package is as simple as pushing a commit, Packager works no matter what workflow your team uses. If you like to use tags, just:"
+        - "<code>git tag v1.0 && git push --tags</code>"
+        - "It just works."
+      code:
+        lang: "shell"
+        content: |
+          git checkout -b packages
+          git commit -m ‘release package v1.0'
+          git push origin packages
+
 
     - id: "package"
-      img: "http://placehold.it/500x500.png&text={example}"
-      title: "Packaging as a service. "
-      subtitle: "Describe your dependencies, commit, push, then... <code>apt-get install</code> or <code>yum install</code>."
+      img: "http://imgs.xkcd.com/comics/compiling.png"
+      title: "Your time."
+      subtitle: "Take a break while Packager works"
       content:
-        - "Tired of using configuration management to automate pulling source & redundantly building your software (multiplied times N number of nodes)? With the DeployPipe packaging service (<strong>Packager.co</strong>) now you don't have to. Simply tell Packager which platforms you need packages for and provide a list of dependencies, and out comes a package (.deb or .rpm)."
+        - "The tools have gotten better, but building packages by hand is still time-consuming. Packager frees you to do real work, or just get some coffee."
 
-    - id: "deploy"
+    - id: "release"
       img: "http://placehold.it/500x500.png&text={example}"
-      title: "Simplified full stack deployment."
-      subtitle: "Make a change, <code>git commit</code>, <code>git push</code>, refresh. Done."
+      title: "Your packages."
+      subtitle: "Make it easier to release and install your software"
       content:
-        - "Remember when a web app meant deploying a web server and a database server? Today's web app deployments have grown in complexity, a challenge magnified by a healthy agile development process. Tools like <a href='http://aws.amazon.com/cloudformation/'>AWS CloudFormation</a> (CF) have helped to ease this pain, but interacting with CF templates can present its own challenges."
+        - "Packager delivers lightweight system packages directly to <a href='https://github.com/blog/1547-release-your-software'>Github releases</a>. Optionally, you can choose to have us host a private package repository that Packager will maintain, making fresh system packages readily available to install with an <code>apt-get update && apt-get upgrade</code> or a <code>yum check-update && yum upgrade</code>."
+        - "Yes, Packager supports Debian (.deb) <em>and</em> Red Hat (.rpm) package formats!"
+        - "What's the difference between Packager packages and the recently popular software packaging trend to include all dependencies in single bloated package? While this approach may initially seem advantageous (because it reduces complexity up-front), it can quickly result in unwanted technical debt in the shape of redundant software on a system, increased risk exposure when software needs to be patched or upgraded, and significantly larger package sizes."
+        - "Don’t ship the world, ship lightweight system packages."
+      code:
+        lang: "shell"
+        content: |
+          apt-add-repository ‘deb https://pkgd.io/heavywater’ 
+          apt-get update 
+          apt-get install myapp
+
+calltoaction:
+  style: "calltoaction"
+  id: "#signup"
+  title: "Start your free trial <span class='under'>today</span>"
+  subtitle: "Sign-up in 60-seconds. Try for free for 30-days."
+  button: 
+    text: "See plans & pricing"
+    url: "/s/pricing"
+
