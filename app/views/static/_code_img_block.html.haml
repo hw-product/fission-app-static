@@ -6,4 +6,4 @@
     %div
       %pre.highlight{class: code[:lang]}= code[:content]
   - else
-    %img{src: image}
+    = image_tag(image_path(image))

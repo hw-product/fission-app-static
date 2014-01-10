@@ -28,7 +28,7 @@ banner:
     text: "Learn More"
     url: "#define"
   img: "http://placehold.it/300x300.png&text={ example DSL }"
-  code: 
+  code:
     lang: "json"
     content: |
       {
@@ -136,7 +136,7 @@ solution:
 
 
     - id: "package"
-      img: "/images/shutterstock_145054669.png"
+      img: "catch-time.png"
       title: "Your time."
       subtitle: "Take a break while Packager works"
       content:
@@ -154,8 +154,8 @@ solution:
       code:
         lang: "shell"
         content: |
-          apt-add-repository ‘deb https://pkgd.io/heavywater’ 
-          apt-get update 
+          apt-add-repository ‘deb https://pkgd.io/heavywater’
+          apt-get update
           apt-get install myapp
 
 calltoaction:
@@ -163,7 +163,6 @@ calltoaction:
   id: "#signup"
   title: "Start your free trial <span class='under'>today</span>"
   subtitle: "Sign-up in 60-seconds. Try for free for 30-days."
-  button: 
+  button:
     text: "See plans & pricing"
     url: "/s/pricing"
-
