@@ -1,8 +1,9 @@
 %div.container
   %div.row
     %div.col-sm-9
-      - value[:content].each do |content|
-        - if content.is_a?(String)
-          %p!= content
-        - else
-          = render content
+      - if value[:content]
+      - [value[:content]].flatten.compact.each do |content|
+          - if content.is_a?(String)
+            %p!= content
+      - if value[:render]
+        = render :partial => value[:render]
