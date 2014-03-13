@@ -5,7 +5,7 @@
   - partials.each do |content_partial|
     - begin
       %div{class: key}
-        %div.container= render partial: content_partial, locals: {key: key, value: value, items: value.is_a?(Hash) ? value[:items] : []}
+        %div= render partial: content_partial, locals: {key: key, value: value, items: value.is_a?(Hash) ? value[:items] : []}
       - break
     - rescue ActionView::MissingTemplate => e
       - Rails.logger.debug "Load attempt of template failed: #{e}"

@@ -1,8 +1,9 @@
-%div.row
-  %div.col-sm-1
-    %i.fa.fa-quote-left.quotes
-  %div.col-sm-10
-    - value[:content].each do |content|
-      %p!= content
-  %div.col-sm-1
-    %i.fa.fa-quote-right.quotes.pull-right
+%div.container
+  %div.row
+    %div.col-sm-1
+      %i.fa.fa-quote-left.quotes
+    %div.col-sm-10
+      - value[:content].each do |content|
+        %p!= content
+    %div.col-sm-1
+      %i.fa.fa-quote-right.quotes.pull-right
