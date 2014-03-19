@@ -1,9 +1,19 @@
-%div.container
+%div.container.documentation
   %div.row
-    %div.col-sm-9
-      - if value[:content]
-      - [value[:content]].flatten.compact.each do |content|
+    - if value[:content]
+      %div.col-sm-12
+        - [value[:content]].flatten.compact.each do |content|
           - if content.is_a?(String)
             %p!= content
-      - if value[:render]
-        = render :partial => value[:render]
+
+    - if value[:items]
+      - value[:items].each do |item|
+        - col = "col-sm-#{item[:width]}"
+        %div{ class: col }
+          :preserve
+            #{render :partial => item[:render]}
+
+    - if value[:render]
+      %div.col-sm-12
+        :preserve
+          #{render :partial => value[:render]}
