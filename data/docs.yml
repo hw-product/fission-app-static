@@ -1,0 +1,16 @@
+---
+nav:
+  - name: "Home"
+    url: "/s/"
+
+  - name: "Docs"
+    url: "#top"
+
+documentation:
+  style: "docs"
+  items:
+    - render: "docs/packager/toc"
+      width: 3
+
+    - render: "docs/packager/packager"
+      width: 9
