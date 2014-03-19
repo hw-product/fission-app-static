@@ -17,7 +17,7 @@ nav:
     url: "#release"
 
   - name: "Pricing"
-    url: "/s/pricing"
+    url: "/pricing"
 
 banner:
   title: "Make system packages, not war."
@@ -165,4 +165,4 @@ calltoaction:
   subtitle: "Sign-up in 60-seconds. Try it free for 14-days."
   button:
     text: "See plans & pricing"
-    url: "/s/pricing"
+    url: "/pricing"

@@ -1,17 +1,17 @@
 ---
 nav:
   - name: "Home"
-    url: "/s/packager"
+    url: "/packager"
 
   - name: "Pricing"
-    url: "/s/pricing"
+    url: "/pricing"
 
 calltoaction:
   style: "calltoaction"
   id: "#signup"
   title: "Sad Panda :("
   subtitle: "The Packager service is currently in pre-release beta testing mode."
-  smallprint: 
+  smallprint:
     - "To request an invite, please send an email to <a href='mailto:beta@packager.co'>beta@packager.co</a> and we'll add you to the invite queue."
     - "Thank you for your interest in Packager!"
   # form:
@@ -22,4 +22,3 @@ calltoaction:
   #       placeholder: "you@example.com"
   #       type: "email"
   #   submit: "Sign me up!"
-
