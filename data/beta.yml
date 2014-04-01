@@ -1,7 +1,7 @@
 ---
 nav:
   - name: "Home"
-    url: "/packager"
+    url: "/"
 
   - name: "Pricing"
     url: "/pricing"
@@ -9,16 +9,15 @@ nav:
 calltoaction:
   style: "calltoaction"
   id: "#signup"
-  title: "Sad Panda :("
+  title: "Request an invite!"
   subtitle: "The Packager service is currently in pre-release beta testing mode."
   smallprint:
-    - "To request an invite, please send an email to <a href='mailto:beta@packager.co'>beta@packager.co</a> and we'll add you to the invite queue."
-    - "Thank you for your interest in Packager!"
-  # form:
-  #   class: "form-inline"
-  #   fields:
-  #     - label: ""
-  #       id: "email"
-  #       placeholder: "you@example.com"
-  #       type: "email"
-  #   submit: "Sign me up!"
+    - "To request an invite, please submit your email address and we'll add you to the invite queue. Thank you for your interest in Packager!"
+  form:
+    class: "form-inline"
+    fields:
+      - label: ""
+        id: "email"
+        placeholder: "you@example.com"
+        type: "email"
+    submit: "Sign me up!"
