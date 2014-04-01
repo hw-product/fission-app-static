@@ -154,7 +154,7 @@ solution:
       code:
         lang: "shell"
         content: |
-          apt-add-repository ‘deb https://pkgd.io/heavywater’
+          apt-add-repository ‘deb https://heavywater.pkgd.io/’
           apt-get update
           apt-get install myapp
 
