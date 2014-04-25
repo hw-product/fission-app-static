@@ -17,5 +17,7 @@ calltoaction:
     url: "/auth/github"
     text: "Sign me up!"
     subtext: "90-second sign-up"
+  checkbox:
+    text: "by clicking 'Sign me up' you agree to the Packager <a href='/termsofservice'>Terms of Service</a>."
 
 partial: "stripe/pricing"
