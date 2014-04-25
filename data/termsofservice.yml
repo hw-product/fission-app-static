@@ -1,0 +1,6 @@
+---
+documentation:
+  style: "docs"
+  items:
+    - render: "docs/packager/termsofservice"
+      width: 12
