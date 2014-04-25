@@ -1,8 +1,5 @@
 ---
 nav:
-  - name: "Home"
-    url: "/"
-
   - name: "Docs"
     url: "#top"
 
