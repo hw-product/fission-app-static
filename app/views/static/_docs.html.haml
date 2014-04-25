@@ -9,7 +9,7 @@
     - if value[:items]
       - value[:items].each do |item|
         - col = "col-md-#{item[:width]}"
-        %div{ class: "col-sm-6 #{col}" }
+        %div{ class: "#{col}" }
           :preserve
             #{render :partial => item[:render]}
 
