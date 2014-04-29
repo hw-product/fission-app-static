@@ -12,3 +12,10 @@
       - if value[:button]
         %a.fission-button-big{ href: value[:button][:url] }
           = value[:button][:text]
+
+      - if value[:checkbox]
+        %div.checkbox
+          %label
+            %input.nofloat{ type: "checkbox" }
+              %small.text-muted
+                != value[:checkbox][:text]
