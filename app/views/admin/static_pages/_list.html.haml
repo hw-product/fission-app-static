@@ -1,0 +1,31 @@
+- pages.each do |product, product_pages|
+  %div.panel.panel-default
+    %div.panel-heading
+      %span.pull-right= link_to 'Create', new_admin_static_page_path(:product_id => product.id), :class => 'btn btn-success'
+      %span
+        %h4= product.name
+    %div.clearfix
+    %div.panel-body
+      %table.table.table-hover
+        %thead
+          %tr
+            %th.col-md-3
+              Title
+            %th.col-md-3
+              Path
+            %th.col-md-5
+              Updated
+            %th.col-md-1
+        %tbody
+          - product_pages.each do |page|
+            %tr
+              %td= page.title
+              %td= page.path
+              %td= page.updated_at
+              %td
+                %a{:href => admin_static_page_path(page.id)}
+                  %span.glyphicon.glyphicon-zoom-in
+                %a{:href => edit_admin_static_page_path(page.id)}
+                  %span.glyphicon.glyphicon-cog
+                %a.window-rails{:href => '#', 'window-rails-ajax' => :delete, 'window-rails-url' => admin_static_page_path(page.id), 'window-rails-confirm' => "Destroy static page (#{page.title})?", 'window-rails-title' => 'Static page destruction'}
+                  %span.glyphicon.glyphicon-remove

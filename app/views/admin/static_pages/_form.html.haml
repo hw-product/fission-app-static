@@ -1,0 +1,32 @@
+:ruby
+  if(defined?(page) && page)
+    title = "Update static page ID: #{page.id}"
+    url = admin_static_page_path(page.id)
+    method = :put
+    button_text = 'Update'
+    page = page.values
+  else
+    title = 'Create new static page'
+    url = admin_static_pages_path
+    method = :post
+    button_text = 'Create'
+    page = {}
+  end
+%div.panel.panel-default
+  %div.panel-heading
+    %h4= title
+  %div.panel-body
+    = form_tag url, :method => method do
+      %div.form-group
+        = label_tag(:page_product_id)
+        = select_tag(:page_product_id, options_for_select(Hash[products.map{|p| [p.name, p.id]}], page.fetch(:product_id, params[:product_id])), :class => 'form-control')
+      %div.form-group
+        = label_tag(:page_title)
+        = text_field_tag :page_title, page[:title], :class => 'form-control'
+      %div.form-group
+        = label_tag(:page_path)
+        = text_field_tag :page_path, page[:path], :class => 'form-control'
+      %div.form-group
+        = label_tag(:page_content)
+        = text_area_tag :page_content, page[:content], :class => 'form-control'
+      = submit_tag button_text, :class => 'btn btn-success'

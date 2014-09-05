@@ -1,0 +1,28 @@
+%div#fission-static-page.container.container-padding
+  %div.panel.panel-default
+    %div.panel-heading
+      %h4= "Static page ID #{@page.id}"
+    %div.panel-body
+      %table.table
+        %thead
+          %tr.info
+            %th{:colspan => 2}
+              Page details
+        %tbody
+          %tr
+            %td.col-md-3
+              %b
+                Product
+            %td= @page.product.name
+          %tr
+            %td.col-md-3
+              %b
+                Title
+            %td= @page.title
+          %tr
+            %td.col-md-3
+              %b
+                Path
+            %td= @page.path
+      %div.well.well-sm
+        %pre= @page.content

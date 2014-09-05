@@ -10,4 +10,6 @@ Gem::Specification.new do |s|
   s.description = 'Fission application static pages'
   s.require_path = 'lib'
   s.files = Dir['**/*']
+  s.add_dependency 'fission-app'
+  s.add_dependency 'kramdown-rails'
 end

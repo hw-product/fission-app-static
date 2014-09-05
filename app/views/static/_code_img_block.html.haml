@@ -1,9 +1,0 @@
-- @smcol = "col-sm-#{defined?(width) ? width : 5}"
-- @mdcol = "col-md-5"
-
-%div{class: "#{@smcol} #{@mdcol}"}
-  - if code
-    %div
-      %pre.highlight{class: code[:lang]}= code[:content]
-  - else
-    = image_tag(image_path(image))
