@@ -3,7 +3,9 @@ Rails.application.routes.draw do
     resources :static_pages
   end
   get 'static/:product/:path', to: 'static_pages#show', :constraints => {:path => /static.*/}
-  get '(:product/):path', to: 'static_pages#show', :constraints => lambda{|req|
+  get ':path', to: 'static_pages#show', :constraints => lambda{|req|
+    puts "**************"
+    p req.path
     !req.path.start_with?('/assets')
   }
 end
