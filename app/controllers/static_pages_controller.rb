@@ -1,6 +1,7 @@
 class StaticPagesController < ApplicationController
 
-  before_action :validate_user!, :except => [:display]
+  before_action :validate_user!, :except => [:show]
+
   before_action do
     @product = Product.find_by_internal_name(
       params.fetch(:product, 'fission')
@@ -17,11 +18,11 @@ class StaticPagesController < ApplicationController
         key = (params[:path] || 'index').sub(@product.internal_name, '').sub(%r{^/}, '')
         @page = @product.static_pages_dataset.where(:path => key).first
         unless(@page)
-          # @todo render raw 404
           flash[:error] = 'Page not found!'
-          redirect_to root_url
+          redirect_to error_path
+        else
+          content_for(:title, @page.title)
         end
-        content_for(:title, @page.title)
       end
     end
   end
