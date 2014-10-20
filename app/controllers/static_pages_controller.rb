@@ -7,6 +7,9 @@ class StaticPagesController < ApplicationController
     @product = Product.find_by_internal_name(
       params.fetch(:product, 'fission')
     )
+    unless(@product)
+      @product = Product.find_by_internal_name('fission')
+    end
   end
 
   def show
