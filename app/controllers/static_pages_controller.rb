@@ -4,12 +4,14 @@ class StaticPagesController < ApplicationController
   before_action :validate_user_permission!, :except => [:show]
 
   before_action do
-    params[:product], params[:path] = params[:path].split('/', 2)
-    @product = Product.find_by_internal_name(
-      params.fetch(:product, 'fission')
-    )
+    product, path = params[:path].to_s.split('/', 2)
+    if(product && product.present?)
+      @product = Product.find_by_internal_name(product)
+    end
     unless(@product)
       @product = Product.find_by_internal_name('fission')
+    else
+      params[:path] = path
     end
   end
 
@@ -21,8 +23,8 @@ class StaticPagesController < ApplicationController
       end
       format.html do
         if(@product)
-          key = (params[:path] || 'index').sub(@product.internal_name, '').sub(%r{^/}, '')
-          @page = @product.static_pages_dataset.where(:path => key).first
+          path = params[:path].present? ? params[:path] : 'index'
+          @page = @product.static_pages_dataset.where(:path => path).first
           unless(@page)
             flash[:error] = 'Page not found!'
             redirect_to error_path
