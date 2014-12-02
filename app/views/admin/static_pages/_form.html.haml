@@ -27,6 +27,9 @@
         = label_tag(:page_path)
         = text_field_tag :page_path, page[:path], :class => 'form-control'
       %div.form-group
+        = label_tag(:page_style)
+        = text_field_tag :page_style, page[:style], :class => 'form-control'
+      %div.form-group
         = label_tag(:page_content)
         = text_area_tag :page_content, page[:content], :class => 'form-control'
       = submit_tag button_text, :class => 'btn btn-success'
