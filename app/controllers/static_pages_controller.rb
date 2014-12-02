@@ -1,6 +1,7 @@
 class StaticPagesController < ApplicationController
 
   before_action :validate_user!, :except => [:show]
+  before_action :validate_user_permission!, :except => [:show]
 
   before_action do
     params[:product], params[:path] = params[:path].split('/', 2)
