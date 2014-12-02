@@ -1,1 +1,6 @@
-= @page.content.md_to_html
+:ruby
+  content_for(:container) do
+    @page.content.md_to_html
+  end
+
+= render 'layouts/container'
