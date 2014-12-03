@@ -1,0 +1,15 @@
+%div.container
+  %div.row
+    %div.col-sm-6.col-md-7
+      %h2!= value[:title]
+      %h4!= value[:subtitle]
+      - if value[:desc]
+        - value[:desc].each do |p|
+          %p= p
+      - if value[:button]
+        %a{ href: value[:button][:url] }
+          %div.fission-button{ type: "button" }
+            = value[:button][:text]
+            %i.fa.fa-arrow-circle-right
+
+    = render partial: 'static/code_img_block', locals: {code: value[:code], image: value[:img], width: 6}

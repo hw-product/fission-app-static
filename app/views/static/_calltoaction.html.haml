@@ -1,0 +1,21 @@
+%div.container
+  %div.row
+    %div.col-sm-12
+      %h1!= value[:title]
+      %h3!= value[:subtitle]
+      - if value[:smallprint]
+        - value[:smallprint].each do |p|
+          %p!= p
+      - if value[:form]
+        = render partial: "static/form", locals: { form: value[:form] }
+
+      - if value[:button]
+        %a.fission-button-big{ href: value[:button][:url] }
+          = value[:button][:text]
+
+      - if value[:checkbox]
+        %div.checkbox
+          %label
+            %input.nofloat{ type: "checkbox" }
+              %small.text-muted
+                != value[:checkbox][:text]
