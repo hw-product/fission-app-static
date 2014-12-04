@@ -4,17 +4,17 @@ nav:
   - name: "Home"
     url: "#top"
 
-  - name: "Define"
-    url: "#define"
+  - name: "Build"
+    url: "#build"
 
-  - name: "Branch"
-    url: "#branch"
+  - name: "Test"
+    url: "#test"
 
   - name: "Package"
     url: "#package"
 
-  - name: "Release"
-    url: "#release"
+  - name: "Deploy"
+    url: "#deploy"
 
   - name: "Pricing"
     url: "/pricing"
