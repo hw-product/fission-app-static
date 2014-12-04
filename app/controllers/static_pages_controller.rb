@@ -4,14 +4,21 @@ class StaticPagesController < ApplicationController
   before_action :validate_access!, :except => [:show]
 
   before_action do
-    product, path = params[:path].to_s.split('/', 2)
-    if(product && product.present?)
-      @product = Product.find_by_internal_name(product)
-    end
-    unless(@product)
-      @product = Product.find_by_internal_name('fission')
+    if(@product)
+      product, path = params[:path].to_s.split('/', 2)
+      if(@product.internal_name == product)
+        params[:path] = path
+      end
     else
-      params[:path] = path
+      product, path = params[:path].to_s.split('/', 2)
+      if(product && product.present?)
+        @product = Product.find_by_internal_name(product)
+      end
+      unless(@product)
+        @product = Product.find_by_internal_name('fission')
+      else
+        params[:path] = path
+      end
     end
   end
 
