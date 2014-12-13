@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.homepage = 'http://github.com/heavywater/fission-app-static'
   s.description = 'Fission application static pages'
   s.require_path = 'lib'
-  s.files = Dir['**/*']
+  s.files = Dir['{app,lib,config,data}/**/**/*'] + %w(fission-app-static.gemspec CHANGELOG.md)
   s.add_dependency 'fission-app'
   s.add_dependency 'kramdown-rails'
 end
