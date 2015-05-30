@@ -26,7 +26,7 @@ class Admin::StaticPagesController < ApplicationController
           ]
         else
           @pages = @pages.all.group_by do |page|
-            page.product.name
+            page.product
           end
         end
       end
@@ -78,7 +78,7 @@ class Admin::StaticPagesController < ApplicationController
         if(@product)
           begin
             @page = @product.add_static_page(args)
-            flash[:success] = "Page created! (#{@page.id})"
+            flash[:success] = "Page created! (#{@product.name}: #{@page.path})"
           rescue => e
             puts "ERROR!!!: #{e}"
             flash[:error] = "Failed to create path: #{e}"
@@ -123,7 +123,7 @@ class Admin::StaticPagesController < ApplicationController
           begin
             @page.update(args)
             @page.save
-            flash[:success] = "Page updated! (#{@page.id})"
+            flash[:success] = "Page updated! (#{@product.name}: #{@page.path})"
           rescue => e
             flash[:error] = "Failed to create path: #{e}"
           end
@@ -138,12 +138,12 @@ class Admin::StaticPagesController < ApplicationController
   def destroy
     begin
       if(@page.destroy)
-        flash[:success] = "Page has been deleted (#{@page.id})"
+        flash[:success] = "Page has been deleted (#{@page.path})"
       else
-        flash[:error] = "Failed to delete page (#{@page.id})"
+        flash[:error] = "Failed to delete page (#{@page.path})"
       end
     rescue => e
-      flash[:error] = "Failed to delete page (#{@page.id}): #{e}"
+      flash[:error] = "Failed to delete page (#{@page.path}): #{e}"
     end
     respond_to do |format|
       format.js do
