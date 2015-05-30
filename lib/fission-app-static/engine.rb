@@ -2,10 +2,6 @@ module FissionApp
   module Static
     class Engine < ::Rails::Engine
 
-module FissionApp
-  module Configs
-    class Engine < ::Rails::Engine
-
       config.to_prepare do |config|
       end
 
