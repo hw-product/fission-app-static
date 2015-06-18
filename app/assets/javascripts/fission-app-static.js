@@ -1,0 +1,1 @@
+//= require_tree ./fission-app-static
