@@ -21,7 +21,7 @@
     - elsif content.has_key?("code")
       %div.window-body
         - if content.code.has_key?("markdown")
-          = partial "layouts/markdown", locals: { content: content.code.markdown }
+          = render :partial => "static/markdown", locals: { content: content.code.markdown }
         - else
           %pre.highlight{ class: content.code.lang }
             %code= "#{content.code.snippet}"

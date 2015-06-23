@@ -1,3 +1,3 @@
 %div.site-wrapper
   %div.site-wrapper-inner
-    = partial "layouts/{layout}", locals: { content: content }
+    = render :partial => "static/{layout}", locals: { content: content }

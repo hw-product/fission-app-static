@@ -2,12 +2,12 @@
   = stylesheet_link_tag "feature"
   - if content.has_key?("icon") || content.has_key?("heading") || content.has_key?("subheading")
     %div.feature-header
-      = partial "layouts/heading", locals: { content: content }
+      = render :partial => "static/heading", locals: { content: content }
   %div.feature-body
     - if content.has_key?("items")
       - content.items.each do |item|
         - if item.kind_of?(Hash)
-          = partial "layouts/display", locals: { content: item }
+          = render :partial => "static/display", locals: { content: item }
 
         - elsif item.kind_of?(Array)
           - columns = content.columns || 1
@@ -28,7 +28,7 @@
                   - index += rows
 
         - else
-          = partial "layouts/elements/p", locals: { content: item }
+          = render :partial => "static/elements/p", locals: { content: item }
 
     - elsif content.kind_of?(String)
-      = partial "layouts/elements/p", locals: { content: content }
+      = render :partial => "static/elements/p", locals: { content: content }

@@ -4,6 +4,6 @@
     = stylesheet_link_tag section["style"]
   %div.container
     - if section.has_key?("data")
-      = partial "layouts/data", locals: { content: section.data }
+      = render :partial => "static/data", locals: { content: section.data }
     - section.content.each do |content|
-      = partial "layouts/display", locals: { content: content }
+      = render :partial => "static/display", locals: { content: content }

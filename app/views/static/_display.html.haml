@@ -1,9 +1,9 @@
 - if content.kind_of?(Hash)
   %div{ class: content["class"], id: content.id }
     - if content.has_key?("data")
-      = partial "layouts/data", locals: { content: content.data }
+      = render :partial => "static/data", locals: { content: content.data }
     - else
-      = partial "layouts/#{content.layout || "default"}", locals: { content: content }
+      = render :partial => "static/#{content.layout || "default"}", locals: { content: content }
 
 - elsif content.kind_of?(Array)
   %div.row
@@ -14,7 +14,7 @@
           - item["class"] = "#{item["class"]} col-sm-#{item.width || @width}"
         - else
           - item["class"] = "col-sm-#{item.width || @width}"
-      = partial "layouts/display", locals: { content: item }
+      = render :partial => "static/display", locals: { content: item }
 
 - else
-  = partial "layouts/default", locals: { content: content }
+  = render :partial => "static/default", locals: { content: content }

@@ -2,7 +2,7 @@
 
 %div.tabular
   %div.table-heading
-    = partial "layouts/heading", locals: { content: content }
+    = render :partial => "static/heading", locals: { content: content }
   %div.well.well-sm
     %div.table-responsive
       %table.table.table-striped
