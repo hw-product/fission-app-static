@@ -1,0 +1,15 @@
+%div.mailchimp
+  = stylesheet_link_tag "mailchimp"
+  %div.form-group{ class: "#{content["class"]}" }
+    %form.form-inline{ action: "//heavywater.us6.list-manage.com/subscribe/post?u=#{content.username}&amp;id=#{content.list_id}",
+                       method: "post",
+                       id: "mc-embedded-subscribe-form",
+                       name: "mc-embedded-subscribe-form",
+                       class: "validate",
+                       target: "_blank",
+                       novalidate: "" }
+      %input.form-control.email.transparent{ type: "email", value: "", name: "EMAIL", id: "mce-EMAIL", placeholder: "#{content.placeholder || "Your email address..."}", required: "" }
+      // "real people should not fill this in and expect good things - do not remove this or risk form bot signups"
+      %div{ style: "position: absolute; left: -5000px;" }
+        %input{ type: "text", name: "b_#{content.username}_#{content.list_id}", tabindex: "-1", value: "" }
+      %input.button.button-small{ type: "submit", value: "#{content.button || "Keep me posted"}", name: "subscribe", id: "mc-embedded-subscribe" }

@@ -1,0 +1,28 @@
+- @nav = content.nav.pages.select { |nav| nav.source == current_resource.path.split(".")[0] }[0]
+%div.nav
+  %nav.navbar.navbar-default.navbar-fixed-top{ id: "nav" }
+    = stylesheet_link_tag "nav"
+    %div.container
+      %div.navbar-header
+        %button.navbar-toggle.collapsed{ "type"=>"button", "data-toggle"=>"collapse", "data-target"=>"#navbar", "aria-expanded"=>"false", "aria-controls"=>"navbar" }
+          %span.sr-only= "Toggle navigation"
+          - 3.times do
+            %span.icon-bar
+        %a.navbar-brand{ href: "/" }
+          - if content.icon
+            %i{ class: content.icon["class"] }
+          %span= content.title
+      %div.navbar-collapse.collapse{ id: "navbar" }
+        - unless @nav == nil
+          %ul.nav.navbar-nav
+            - if @nav.has_key?("options")
+              - @nav.options.each do |option|
+                %li
+                  = partial "layouts/elements/a", locals: { content: option }
+
+        %ul.nav.navbar-nav.navbar-right
+          - if content.nav.actions
+            - content.nav.actions.each do |nav|
+              - nav.options.each do |option|
+                %li
+                  = partial "layouts/elements/a", locals: { content: option }

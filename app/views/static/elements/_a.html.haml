@@ -1,0 +1,13 @@
+- if content.external
+  - target = "_blank"
+- else
+  - target = ""
+- if not defined? url
+  - url = content.url
+%a{ href: url, target: target }
+  - if content.icon
+    %span.icon.text-center{ class: content.icon["class"] }
+  - if defined?(img)
+    = partial "layouts/elements/img", locals: { src: img }
+  - else
+    %span= content.text || content.name || "Link"

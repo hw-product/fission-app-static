@@ -1,0 +1,19 @@
+%hr.divider
+%footer.footer
+  = stylesheet_link_tag "footer"
+  %div.container
+    %div.row
+      - data.site.nav.pages.each do |page|
+        %div.col-sm-2
+          - page.options.each do |option|
+            %p
+              = partial "layouts/elements/a", locals: { content: option, url: page.url + option.url }
+      - offset = ((6 - data.site.nav.pages.count) * 2) - 2
+      %div.col-sm-2{ class: "col-sm-offset-#{offset}" }
+        - data.site.nav.actions.each do |action|
+          - action.options.each do |option|
+            %p
+              = partial "layouts/elements/a", locals: { content: option, url: option.url }
+
+    %div.row
+      %p.text-center.theme-text= content.footnotes.author

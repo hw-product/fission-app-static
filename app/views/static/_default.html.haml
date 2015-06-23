@@ -1,20 +1,34 @@
-- case value
-- when Hash
-  - if value[:style]
-    = render partial: value[:style].include?('/') ? value[:style] : "static/#{value[:style]}", :locals => {name: key, items => value[:items]}
-  - else
-    - [value[:items]].flatten.each_with_index do |step, idx|
-      %div.step.navfix{id: step[:id]}
-        %div.container
-          %div.row
-            - if idx % 2 == 0
-              = render partial: 'static/content_block', locals: {item: step}
-              = render partial: 'static/code_img_block', locals: {code: step[:code], image: step[:img]}
-            - else
-              = render partial: 'static/code_img_block', locals: {code: step[:code], image: step[:img]}
-              = render partial: 'static/content_block', locals: {item: step}
-- when Array
-  - value.each do |content|
-    %p!= content
-- else
-  %p!= value
+%div.feature{ id: content.id }
+  = stylesheet_link_tag "feature"
+  - if content.has_key?("icon") || content.has_key?("heading") || content.has_key?("subheading")
+    %div.feature-header
+      = partial "layouts/heading", locals: { content: content }
+  %div.feature-body
+    - if content.has_key?("items")
+      - content.items.each do |item|
+        - if item.kind_of?(Hash)
+          = partial "layouts/display", locals: { content: item }
+
+        - elsif item.kind_of?(Array)
+          - columns = content.columns || 1
+          - width = 12 / columns
+          - bullets = content.bullets || "octicon octicon-check"
+          - rows = item.count / columns
+          - if item.count % columns > 0
+            - rows += 1
+          - index = 0
+          %div.row.checklist
+            - columns.times do
+              %div{ class: "col-md-#{width}" }
+                %ul.list-unstyled
+                  - item[index,rows].each do |content|
+                    %li
+                      %span.icon{ class: "#{bullets}" }
+                      %span= content
+                  - index += rows
+
+        - else
+          = partial "layouts/elements/p", locals: { content: item }
+
+    - elsif content.kind_of?(String)
+      = partial "layouts/elements/p", locals: { content: content }

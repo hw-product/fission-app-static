@@ -1,0 +1,17 @@
+%div.sponsor
+  = stylesheet_link_tag "sponsor-bio"
+  %div.sponsor-logo{ style: content.style }
+    %a.sponsor-logo-wrapper{ href: content.url, target: "_blank" }
+      = partial "layouts/elements/img", locals: { src: content.img.src }
+    - if content.has_key?("ribbon")
+      = partial "layouts/ribbon", locals: { content: content }
+  %div.sponsor-profile
+    - content.desc.each do |desc|
+      - if desc == ""
+        %p.text-justify.temp= lorem.paragraph
+      - else
+        %p.text-justify= desc
+  %div.sponsor-link
+    %a{ href: content.url, target: "_blank" }
+      %span= "Learn more"
+      %span.fa.fa-external-link-square

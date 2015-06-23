@@ -1,0 +1,7 @@
+%div.google-form
+  %iframe{ src: "https://docs.google.com/a/#{content.domain || "hw-ops.com"}/forms/d/#{content.id}/viewform?embedded=true",
+           width: content.width || 760,
+           height: content.height || 500,
+           frameborder: content.frameborder || "0",
+           marginheight: content.marginheight || "0",
+           marginwidth: "0" }= "Loading..."

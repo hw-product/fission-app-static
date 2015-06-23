@@ -1,0 +1,9 @@
+- if content.references.count > 0
+  %div.feature-footer
+    %p
+      %strong= "Learn more: "
+      - content.references.each do |reference|
+        - if content.references[-1] == reference
+          %a{ href: reference.url }= reference.text
+        - else
+          %a{ href: reference.url }= reference.text + ", "

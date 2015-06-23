@@ -1,0 +1,27 @@
+%div.window
+  = stylesheet_link_tag "window"
+  = stylesheet_link_tag "lightbox"
+  = javascript_include_tag "//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"
+  = javascript_include_tag "lightbox.js"
+  %div.window-frame
+    %span.window-button
+    %span.window-button
+    %span.window-button
+  - if content.has_key?("address")
+    %div.window-address-bar
+      %p
+        - if content.address.match(/^https/)
+          %span.secure.fa.fa-lock
+        %span= content.address
+
+  %div.window-content
+    - if content.has_key?("img")
+      %a{ "href" => content.img.src, "data-lightbox" => content.img.src }
+        %img{ src: content.img.src }
+    - elsif content.has_key?("code")
+      %div.window-body
+        - if content.code.has_key?("markdown")
+          = partial "layouts/markdown", locals: { content: content.code.markdown }
+        - else
+          %pre.highlight{ class: content.code.lang }
+            %code= "#{content.code.snippet}"

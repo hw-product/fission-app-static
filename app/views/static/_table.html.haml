@@ -1,0 +1,19 @@
+= stylesheet_link_tag "table"
+
+%div.tabular
+  %div.table-heading
+    = partial "layouts/heading", locals: { content: content }
+  %div.well.well-sm
+    %div.table-responsive
+      %table.table.table-striped
+        %thead
+          %tr
+            - content.table.headings.each do |heading|
+              %th
+                %span= heading
+        %tbody
+          - content.table.rows.each do |row|
+            %tr
+              - row.each do |column|
+                %td
+                  %span= column

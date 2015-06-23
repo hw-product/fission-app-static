@@ -1,0 +1,9 @@
+!!! 5
+%html{ lang: "en" }
+  = partial "layouts/head"
+
+  %body{ "data-spy"=>"scroll", "data-target"=>"#nav", "data-offset"=>"50" }
+    = partial "layouts/nav", locals: { content: data.site }
+    = yield
+    = partial "layouts/footer", locals: { content: data.site }
+  = partial "layouts/tail"

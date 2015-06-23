@@ -1,0 +1,5 @@
+%a.button{ href: content.button.url }
+  = stylesheet_link_tag "button"
+  %span= content.button.text
+  - if content.button.icon
+    %i{ class: content.button.icon["class"] }

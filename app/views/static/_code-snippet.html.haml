@@ -1,0 +1,5 @@
+%div.code-snippet
+  = stylesheet_link_tag "code-snippet"
+  %pre.highlight{ class: content.lang }
+    :preserve
+      #{content.snippet}
