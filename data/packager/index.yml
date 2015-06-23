@@ -1,168 +1,172 @@
 ---
-app: "Packager"
-nav:
-  - name: "Home"
-    url: "#top"
-
-  - name: "Define"
-    url: "#define"
-
-  - name: "Branch"
-    url: "#branch"
-
-  - name: "Package"
-    url: "#package"
-
-  - name: "Release"
-    url: "#release"
-
-  - name: "Pricing"
-    url: "/pricing"
-
-banner:
-  title: "Make system packages, not war."
-  subtitle: "Software-packaging-as-a-service"
-  desc:
-    - "Does manually installing software make you want to rage? Stop the fighting! If you can say \"Works on my machine!\", you can create shippable system packages."
-  button:
-    text: "Learn More"
-    url: "#define"
-  img: "http://placehold.it/300x300.png&text={ example DSL }"
-  code:
-    lang: "json"
-    content: |
-      {
-        "target": {
-          "platform": 'ubuntu',
-          "version": '12.04',
-          "package": 'deb',
-          "arch": 'amd64'
-        },
-        "dependencies": {
-          "build": ['libpq-dev'],
-          "runtime": ['libpq5']
-        },
-        "build": {
-          "name": 'myapp',
-          "template": 'rails',
-          "install_prefix", '/var/www/myapp'
-        }
-      }
-
-problem:
-  style: "bigquote"
+- id: "top"
+  class: "theme-bg-primary"
   content:
-    - "You shouldn't need to use configuration management to fetch source files and build binaries on every production node. If you're doing this because making packages and maintaining a repository is too hard, now you don't have to."
+    -
+      - width: "7"
+        heading: "Make installable packages, not
+          <text-muted>.</text-muted>war <text-muted>(files)</text-muted>"
+        items:
+          - subheading: "Stop writing installation scripts."
+          - "If you're implementing solutions for installing software because
+            building system packages is too hard, stop. You know how to build
+            your software. You know your application's dependencies. Let
+            Packager do the rest."
+          - "You shouldn't need to use configuration management to fetch source
+            files and build binaries on every production node. If you're doing
+            this because making packages and maintaining a repository is too
+            hard, now you don't have to."
+          - layout: "button"
+            button:
+              text: "Learn More"
+              url: "#workflow"
+      - width: "5"
+        layout: "code-snippet"
+        lang: "json"
+        snippet: |
+          {
+            "target": {
+              "platform": 'ubuntu',
+              "version": '14.04',
+              "package": 'deb',
+              "arch": 'amd64'
+            },
+            "dependencies": {
+              "build": ['libpq-dev'],
+              "runtime": ['libpq5']
+            },
+            "build": {
+              "name": 'myapp',
+              "template": 'rails',
+              "install_prefix", '/var/www/myapp'
+            }
+          }
 
-features:
-  style: "row_list"
-  items:
-    - icon: "fa-edit"
-      title: "Define."
-      content: "You already know what dependencies are required to build & run your code on your laptop, just tell us what they are and we'll do the rest."
-      url: "#define"
+- id: "workflow"
+  class: "theme-bg-alt"
+  content:
+    -
+      - class: "text-center"
+        icon:
+          class: "mega-octicon octicon-tag large-icon"
+        items:
+          - heading: "Tag."
+            items:
+              - "Packager will run everytime you create a tag in
+                your source code repository."
+      - class: "text-center"
+        icon:
+          class: "mega-octicon octicon-package large-icon"
+        items:
+          - heading: "Package."
+            items:
+              - "Packager will build your application and create installable
+                <strong>.deb</strong> or <strong>.rpm</strong> system packages."
+      - class: "text-center"
+        icon:
+          class: "mega-octicon octicon-cloud-download large-icon"
+        items:
+          - heading: "Install."
+            items:
+              - "Install <em>your</em> applications with an <code>apt-get
+                install</code> or <code>yum install</code>."
 
-    - icon: "fa-code-fork"
-      title: "Branch."
-      content: "Any commits pushed to a branch of your choice can trigger automated package builds."
-      url: "#branch"
+- id: "features"
+  class: "theme-bg-primary features"
+  content:
+    -
+      - layout: "window"
+        width: "5"
+        img:
+          src: "img/github-releases.png"
 
-    - icon: "fa-beer"
-      title: "Package."
-      content: "Commit your changes, push them up to GitHub, and go have a beer (you've earned it)."
-      url: "#package"
+      - width: "7"
+        lang: "shell"
+        heading: "Your packages."
+        subheading: "Release your software in a ready-to-install format."
+        items:
+          - "Packager delivers installable packages directly to <a
+            href=https://github.com/blog/1547-release-your-software>Github
+            releases</a>. Optionally, packages may also be uploaded to public or
+            private package repositories hosted by Packager, or to third-party
+            repositories such as <a href=https://packagecloud.io target=_blank
+            >package cloud</a>, making updates to <em>your applications</em>
+            readily available to install with an <code>apt-get install</code> or
+            a <code>yum install</code>."
+    -
+      - width: "7"
+        heading: "Your existing workflow."
+        subheading: "Packager promotes best practices."
+        items:
+          - "Packager promotes a healthy software development life cycle (SDLC)
+            by creating installable packages for every tag in your source code
+            repository. Creating a package is as simple as pushing a tag."
+          - "Have you added new features? Are your tests passing? Create a tag,
+            get a package."
 
-    - icon: "fa-gift"
-      title: "Release."
-      content: "Packager will push packages to the Releases section of your GitHub repo & notify you by email when your packages are ready to use."
-      url: "#release"
+      - layout: "code-snippet"
+        width: "5"
+        lang: "shell"
+        snippet: |
+          $> git tag -a 'v1.0' -m 'release version 1.0'
+          $> git push --tags
 
-solution:
-  items:
-    - id: "define"
-      title: "Your code."
-      subtitle: "Add a <code>.packager</code> file & describe your package(s)"
-      content:
-        - "Packager is a single purpose <abbr title='Continuous Integration'>CI</abbr> service that responds to GitHub webhooks. The <code>.packager</code> configuration file can be written in a simple DSL or JSON and lives in source control alongside your code. Packager can even build multiple dependent packages from a single config file, or - if you’re really crazy - an entire tree of dependent packages."
-        - "Do you need to build a custom runit package that your Rails application depends on? We got that."
-        - "Packager has several pre-existing definitions to simplify packaging for common application types. Currently supported templates: <code>:rails</code> for Rails applications, <code>:erlang</code> for Erlang applications, and a <code>:generic</code> default template for everything else. Need something specific? <a href='mailto:support@packager.co'>Ask us!</a>"
-      img: "http://placehold.it/500x500.png&text={example}"
-      code:
-        lang: "ruby"
-        content: |
+          Counting objects: 1, done.
+          Writing objects: 100%
+          Total 1 (delta 0), reused 0 (delta 0)
+          To git@github.com:heavywater/redis.git
+          * [new tag]         v1.0 -> v1.0
+
+    -
+      - id: "configuration"
+        layout: "code-snippet"
+        width: "5"
+        lang: "json"
+        snippet: |
           # -*- mode: ruby -*-
           # -*- encoding: utf-8 -*-
+
           Packager.build do
-            target do
-              platform 'ubuntu'
-              version '12.04'
-              package 'deb'
-              arch 'amd64'
-            end
-            dependencies do
-              build ['libpq-dev']
-              runtime ['libpq5']
-            end
-            configure do
-              environment 'production'
-            end
-            build do
-              name 'myapp'
-              template :rails
-              install_prefix '/var/www/myapp'
-              commands do
-                after.build [
-                  'rake middleman'
-                ]
+            ubuntu do
+              target do
+                platform 'ubuntu'
+                version '14.04'
+              end
+              dependencies do
+                runtime ['libc6']
+              end
+              build do
+                name 'hw-redis'
+                template :generic
+                commands do
+                  build [
+                    'make distclean',
+                    'make',
+                    'make PREFIX=$PKG_DIR/usr/local install'
+                  ]
+                end
               end
             end
           end
-
-    - id: "branch"
-      img: "http://placehold.it/500x500.png&text={example}"
-      title: "Your existing workflow."
-      subtitle: "No need to panic, Packager works with what you already do."
-      content:
-        - "If your organization already maintains a branch that represents stable, production-ready code, Packager can continuously build releases from this branch. Alternatively, you can use a dedicated branch to package releases on-demand."
-        - "Creating a package is as simple as pushing a commit, Packager works no matter what workflow your team uses. If you like to use tags, just:"
-        - "<code>git tag v1.0 && git push --tags</code>"
-        - "It just works."
-      code:
-        lang: "shell"
-        content: |
-          git checkout -b packages
-          git commit -m ‘release package v1.0'
-          git push origin packages
+      - width: "7"
+        heading: "Simple configuration."
+        subheading: "No more installation scripts."
+        items:
+          - "The <code>.packager</code> configuration file can be written in
+            JSON or a simple DSL and lives in source control alongside your
+            code. Packager can even build multiple packages from a single config
+            file, or an entire tree of dependent packages."
+          - "Do you need to build a custom ruby version that your Rails
+            application depends on? Packager will do that for you."
 
 
-    - id: "package"
-      img: "catch-time.png"
-      title: "Your time."
-      subtitle: "Take a break while Packager works"
-      content:
-        - "The tools have gotten better, but building packages by hand is still time-consuming. Packager frees you to do real work, or just get some coffee."
-
-    - id: "release"
-      img: "http://placehold.it/500x500.png&text={example}"
-      title: "Your packages."
-      subtitle: "Make it easier to release and install your software"
-      content:
-        - "Packager delivers lightweight system packages directly to <a href='https://github.com/blog/1547-release-your-software'>Github releases</a>. Optionally, you can choose to have us host a private package repository that Packager will maintain, making fresh system packages readily available to install with an <code>apt-get update && apt-get upgrade</code> or a <code>yum check-update && yum upgrade</code>."
-        - "Yes, Packager supports Debian (.deb) <em>and</em> Red Hat (.rpm) package formats!"
-        - "What's the difference between Packager packages and the recently popular software packaging trend to include all dependencies in single bloated package? While this approach may initially seem advantageous (because it reduces complexity up-front), it can quickly result in unwanted technical debt in the shape of redundant software on a system, increased risk exposure when software needs to be patched or upgraded, and significantly larger package sizes."
-        - "Don’t ship the world, ship lightweight system packages."
-      code:
-        lang: "shell"
-        content: |
-          apt-add-repository ‘deb https://heavywater.pkgd.io/’
-          apt-get update
-          apt-get install myapp
-
-calltoaction:
-  style: "calltoaction"
-  id: "#signup"
-  title: "Start your free trial <span class='under'>today</span>"
-  subtitle: "Sign-up in 60-seconds. Try it free for 14-days."
-  button:
-    text: "See plans & pricing"
-    url: "/pricing"
+- id: "pricing"
+  class: "theme-bg-alt text-center"
+  content:
+    - heading: "Join the technical preview <underline>today</underline>."
+      subheading: "Sign-up in 60-seconds. Try Packager for free for 30-days."
+    - layout: "button"
+      class: "button-large"
+      button:
+        text: "Get Started!"
+        url: "https://www.packager.co/login"
