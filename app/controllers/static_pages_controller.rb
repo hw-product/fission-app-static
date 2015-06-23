@@ -47,7 +47,16 @@ class StaticPagesController < ApplicationController
     end
   end
 
-  def static_file_path(product, path)
+  def static_file_path(product, page)
+    data = Rails.application.config.settings.get(:static, :pages, product, page)
+    if(data)
+      @data = data
+      @app_name = product.name
+      render 'static/display'
+      true
+    end
+  end
+
     store = Rails.application.config.fission.static_pages_content
     key = [product.internal_name, path].join('/')
     if(store[key])
