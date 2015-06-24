@@ -1,5 +1,4 @@
 %div.feature{ id: content.id }
-  = stylesheet_link_tag "feature"
   - if content.has_key?("icon") || content.has_key?("heading") || content.has_key?("subheading")
     %div.feature-header
       = render :partial => "static/heading", locals: { content: content }

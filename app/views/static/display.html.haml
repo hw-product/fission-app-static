@@ -1,2 +1,3 @@
-- @data.slice(0,3).each do |section|
-  = render :partial => 'static/section', :locals => {:section => section}
+= stylesheet_link_tag "fission-app-static/base"
+- @data.each do |section|
+  = render :partial => 'static/section', :locals => { :section => section }
