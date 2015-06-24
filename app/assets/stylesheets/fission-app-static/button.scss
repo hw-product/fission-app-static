@@ -1,0 +1,26 @@
+@import "fission-app-static/theme";
+
+.button {
+  display: inline-block;
+  background-color: $theme-dark;
+  color: white !important;
+  padding: 20px 30px;
+  margin: 20px 0px;
+  border-bottom: $theme-darker solid 5px;
+  text-decoration: none !important;
+  font-size: 1.2em;
+};
+
+.button:hover {
+  text-decoration: none !important;
+  color: white !important;
+};
+
+.button:active {
+  margin-top: 25px;
+  border-bottom: none;
+};
+
+.button-large {
+  font-size: 2.0em;
+};
