@@ -48,7 +48,7 @@ class StaticPagesController < ApplicationController
   end
 
   def static_file_path(product, page)
-    data = Rails.application.config.settings.get(:static, :pages, product, page)
+    data = Rails.application.config.settings.get(:static, :pages, product.internal_name, page)
     if(data)
       @data = data
       @app_name = product.name
@@ -56,18 +56,5 @@ class StaticPagesController < ApplicationController
       true
     end
   end
-
-    store = Rails.application.config.fission.static_pages_content
-    key = [product.internal_name, path].join('/')
-    if(store[key])
-      @content = store[key].dup
-      @content.delete(:app)
-      @nav = @content.delete(:nav)
-      @app_name = product.name
-      render 'static/display'
-      true
-    end
-  end
-
 
 end
