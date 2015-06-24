@@ -1,4 +1,24 @@
 ---
+- app: "Packager"
+- nav:
+  - name: "Home"
+    url: "#top"
+
+  - name: "Define"
+    url: "#define"
+
+  - name: "Branch"
+    url: "#branch"
+
+  - name: "Package"
+    url: "#package"
+
+  - name: "Release"
+    url: "#release"
+
+  - name: "Pricing"
+    url: "/pricing"
+
 - id: "top"
   class: "theme-bg-primary"
   content:
@@ -78,8 +98,7 @@
       - layout: "window"
         width: "5"
         img:
-          src: "img/github-releases.png"
-
+          src: "images/github-releases.png"
       - width: "7"
         lang: "shell"
         heading: "Your packages."
@@ -159,8 +178,7 @@
           - "Do you need to build a custom ruby version that your Rails
             application depends on? Packager will do that for you."
 
-
-- id: "pricing"
+- id: "get-started"
   class: "theme-bg-alt text-center"
   content:
     - heading: "Join the technical preview <underline>today</underline>."
