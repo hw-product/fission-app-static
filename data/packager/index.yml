@@ -98,7 +98,7 @@
       - layout: "window"
         width: "5"
         img:
-          src: "images/github-releases.png"
+          src: "static-assets/images/github-releases.png"
       - width: "7"
         lang: "shell"
         heading: "Your packages."
