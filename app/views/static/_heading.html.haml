@@ -3,6 +3,6 @@
   - if content.has_key?("icon")
     %i{ class: content.icon["class"], style: content.icon["style"] }
   - if content.has_key?("heading")
-    %h1= content.heading
+    %h1!= content.heading
   - if content.has_key?("subheading")
-    %h3= content.subheading
+    %h3!= content.subheading

@@ -23,7 +23,7 @@
                   - item[index,rows].each do |content|
                     %li
                       %span.icon{ class: "#{bullets}" }
-                      %span= content
+                      %span!= content
                   - index += rows
 
         - else
