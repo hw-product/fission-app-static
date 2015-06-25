@@ -1,4 +1,39 @@
 ---
+- pages:
+    - name: "Landing Page"
+      source: "index"
+      url: "/"
+      options:
+        - name: "Home"
+          url: "#top"
+        - name: "Workflow"
+          url: "#workflow"
+        - name: "Features"
+          url: "#features"
+        - name: "Docs"
+          url: "https://www.packager.co/docs"
+    - name: ""
+      url: "#"
+      options:
+        - name: "Docs"
+          url: "https://www.packager.co/docs"
+    - name: ""
+      url: ""
+      options:
+        - name: "Privacy"
+          url: "https://www.packager.co/privacy"
+        - name: "Terms"
+          url: "https://www.packager.co/termsofservice"
+  actions:
+    - name: "Actions"
+      url: "#"
+      options:
+        - name: "Dashboard"
+          url: "https://www.packager.co/login"
+          external: "true"
+  title: Packager
+  navigation: true
+
 - app: "Packager"
 - nav:
   - name: "Home"
