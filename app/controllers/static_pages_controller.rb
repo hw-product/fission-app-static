@@ -56,7 +56,7 @@ class StaticPagesController < ApplicationController
         @nav_partial = Smash.new(
           :partial => 'static/nav',
           :locals => Smash.new(
-            :nav => data.first
+            :nav => data.shift
           )
         )
       end
