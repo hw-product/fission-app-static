@@ -50,8 +50,15 @@ class StaticPagesController < ApplicationController
   def static_file_path(product, page)
     data = Rails.application.config.settings.get(:static, :pages, product.internal_name, page)
     if(data)
-      @data = data
       @app_name = product.name
+      if(data.first.delete(:navigation))
+        @nav_partial = Smash.new(
+          :partial => 'static/nav',
+          :locals => Smash.new(
+            :nav => data.first
+          )
+        )
+      end
       render 'static/display'
       true
     end
