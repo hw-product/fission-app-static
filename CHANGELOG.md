@@ -1,3 +1,6 @@
+# v0.1.6
+* Refactor static behavior
+
 # v0.1.4
 * Add navigation access
 * Fix admin CRUD
