@@ -1,23 +1,38 @@
 ---
-- app: "Packager"
-- nav:
-  - name: "Home"
-    url: "#top"
-
-  - name: "Define"
-    url: "#define"
-
-  - name: "Branch"
-    url: "#branch"
-
-  - name: "Package"
-    url: "#package"
-
-  - name: "Release"
-    url: "#release"
-
-  - name: "Pricing"
-    url: "/pricing"
+- title: "Packager"
+  navigation: true
+  pages:
+    - name: "Landing Page"
+      source: "index"
+      url: "/"
+      options:
+        - name: "Home"
+          url: "#top"
+        - name: "Workflow"
+          url: "#workflow"
+        - name: "Features"
+          url: "#features"
+        - name: "Docs"
+          url: "/docs"
+    - name: ""
+      url: "#"
+      options:
+        - name: "Docs"
+          url: "/docs"
+    - name: ""
+      url: ""
+      options:
+        - name: "Privacy"
+          url: "/privacy"
+        - name: "Terms"
+          url: "/termsofservice"
+  actions:
+    - name: "Actions"
+      url: "#"
+      options:
+        - name: "Dashboard"
+          url: "/login"
+          external: "true"
 
 - id: "top"
   class: "theme-bg-primary"
@@ -98,7 +113,7 @@
       - layout: "window"
         width: "5"
         img:
-          src: "images/github-releases.png"
+          src: "static-assets/images/github-releases.png"
       - width: "7"
         lang: "shell"
         heading: "Your packages."
@@ -187,4 +202,4 @@
       class: "button-large"
       button:
         text: "Get Started!"
-        url: "https://www.packager.co/login"
+        url: "/login"

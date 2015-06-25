@@ -31,6 +31,7 @@ module FissionApp
             Rails.application.config.settings.set(:static, :pages, *args)
           end
         end
+        Rails.application.config.settings.set(:static, :asset_paths, [File.join(File.dirname(__FILE__), '..', '..', 'public', 'static-assets')])
 
       end
 

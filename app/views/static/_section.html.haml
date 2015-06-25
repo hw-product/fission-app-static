@@ -5,5 +5,5 @@
   %div.container
     - if section.has_key?("data")
       = render :partial => "static/data", locals: { content: section.data }
-    - section.content.each do |content|
+    - section.fetch(:content, []).each do |content|
       = render :partial => "static/display", locals: { content: content }

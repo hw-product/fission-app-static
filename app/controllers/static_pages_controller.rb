@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
 
-  before_action :validate_user!, :except => [:show]
-  before_action :validate_access!, :except => [:show]
+  before_action :validate_user!, :except => [:show, :deliver_asset]
+  before_action :validate_access!, :except => [:show, :deliver_asset]
 
   before_action do
     if(@product)
@@ -50,10 +50,31 @@ class StaticPagesController < ApplicationController
   def static_file_path(product, page)
     data = Rails.application.config.settings.get(:static, :pages, product.internal_name, page)
     if(data)
-      @data = data
       @app_name = product.name
+      @data = data
+      if(data.first.delete(:navigation))
+        @nav_partial = Smash.new(
+          :partial => 'static/nav',
+          :locals => Smash.new(
+            :nav => data.shift
+          )
+        )
+      end
       render 'static/display'
       true
+    end
+  end
+
+  def deliver_asset
+    item = "#{params[:path]}.#{params[:format]}"
+    file = Rails.application.config.settings.fetch(:static, :asset_paths, []).map do |root|
+      path = File.join(root, item)
+      path if File.exists?(path)
+    end.compact.first
+    if(file)
+      send_file file, :inline => true
+    else
+      raise ActionController::RoutingError.new('Not Found')
     end
   end
 
