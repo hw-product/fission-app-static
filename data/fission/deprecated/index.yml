@@ -1,0 +1,100 @@
+---
+app: "DeployPipe"
+nav:
+  - name: "Home"
+    url: "#top"
+
+  - name: "Build"
+    url: "#build"
+
+  - name: "Test"
+    url: "#test"
+
+  - name: "Package"
+    url: "#package"
+
+  - name: "Deploy"
+    url: "#deploy"
+
+  - name: "Pricing"
+    url: "/pricing"
+
+banner:
+  title:  "What's in your <small><span class='text-muted'>(software delivery)</span></small> pipe?"
+  subtitle: "The worlds first Composable Continuous Delivery Platform."
+  desc:
+    - "Drop a config file in your code repository to trigger any number of builds, application test(s), system packages, infrastructure tests, AND deployment(s) to the cloud. There's even an API if you need to integrate custom tasks into the pipeline."
+  button:
+    text: "Smoke it."
+    url:  "#build"
+  img: "http://placehold.it/320x240.png&text={hash}"
+
+problem:
+  style: "bigquote"
+  content:
+    - "What if shipping software wasn't so hard? What if you could plug into a deployment pipeline that provided repeatable steps to get from development to production without so much fuss? Now you can. We call it a <strong>Composable Continuous Delivery Platform</strong>. It's made up of individual services that you can combine to help make shipping software less painful for your business:"
+
+features:
+  style: "row_list"
+  items:
+    - icon: "fa-code"
+      title: "Build."
+      content: "Continuous integration without the continuous tinkering. Because CI should just work."
+      url: "#build"
+
+    - icon: "fa-flask"
+      title: "Test."
+      content: "Convergence testing, on multiple platforms. Because 'works on my machine' isn't actually that funny."
+      url: "#test"
+
+    - icon: "fa-gift"
+      title: "Package."
+      content: "Lightweight packages that don't include the kitchen sink. Stop shipping dependencies. Just ship your software."
+      url: "#package"
+
+    - icon: "fa-cloud-upload"
+      title: "Deploy."
+      content: "Don't deploy, scale. From a commit-hook. On AWS, Rackspace, or your OpenStack-powered private-cloud."
+      url: "#deploy"
+
+solution:
+  items:
+    - id: "build"
+      img: "http://placehold.it/500x500.png&text={example}"
+      title: "Painless Automated Builds"
+      subtitle: "Because no one really likes <del>configuring</del> Jenkins."
+      content:
+        - "By definition, the word 'continuous' infers an unbroken stream; without interruption. In the context of <strong>continuous integration</strong> (CI) in software development, this 'stream' should be the developers workflow. Unfortunately, most CI tools introduce a significant interruption in workflow; requiring constant configuration and maintenance."
+        - "The DeployPipe CI service is called <strong>Nellie</strong>. It allows you to trigger the execution of any number of arbitrary builds and/or application tests via a simple DSL."
+
+    - id: "test"
+      img: "http://placehold.it/500x500.png&text={example}"
+      title: "Test all the things."
+      subtitle: "Full stack integration tests, on multiple architectures, as a service."
+      content:
+        - "All the application testing in the world won't do any good if the infrastructure it is deployed onto hasn't been tested."
+        - "How often are software bugs actually related to a missing dependency, or a dependency conflict? How often are the 'works on my machine' issues a result of a flaw in the application deployment process?"
+        - "No <em>true</em> continuous delivery pipeline would be complete without automated tests, and those test couldn't be considered comprehensive enough to depend on without infrastructure testing."
+
+    - id: "package"
+      img: "http://placehold.it/500x500.png&text={example}"
+      title: "Packaging as a service. "
+      subtitle: "Describe your dependencies, commit, push, then... <code>apt-get install</code> or <code>yum install</code>."
+      content:
+        - "Tired of using configuration management to automate pulling source & redundantly building your software (multiplied times N number of nodes)? With the DeployPipe packaging service (<strong>Packager.co</strong>) now you don't have to. Simply tell Packager which platforms you need packages for and provide a list of dependencies, and out comes a package (.deb or .rpm)."
+
+    - id: "deploy"
+      img: "http://placehold.it/500x500.png&text={example}"
+      title: "Simplified full stack deployment."
+      subtitle: "Make a change, <code>git commit</code>, <code>git push</code>, refresh. Done."
+      content:
+        - "Remember when a web app meant deploying a web server and a database server? Today's web app deployments have grown in complexity, a challenge magnified by a healthy agile development process. Tools like <a href='http://aws.amazon.com/cloudformation/'>AWS CloudFormation</a> (CF) have helped to ease this pain, but interacting with CF templates can present its own challenges."
+
+calltoaction:
+  style: "calltoaction"
+  id: "#signup"
+  title: "Start your free trial <span class='under'>today</span>"
+  subtitle: "Sign-up in 60-seconds. Try it free for 14-days."
+  button:
+    text: "See plans & pricing"
+    url: "/pricing"
