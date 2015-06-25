@@ -4,7 +4,6 @@
   pages:
     - name: "Landing Page"
       source: "index"
-      url: "/"
       options:
         - name: "Home"
           url: "#top"
