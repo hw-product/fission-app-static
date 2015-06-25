@@ -51,6 +51,7 @@ class StaticPagesController < ApplicationController
     data = Rails.application.config.settings.get(:static, :pages, product.internal_name, page)
     if(data)
       @app_name = product.name
+      @data = data
       if(data.first.delete(:navigation))
         @nav_partial = Smash.new(
           :partial => 'static/nav',
