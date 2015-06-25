@@ -1,5 +1,7 @@
 ---
-- pages:
+- title: "Packager"
+  navigation: true
+  pages:
     - name: "Landing Page"
       source: "index"
       url: "/"
@@ -11,48 +13,26 @@
         - name: "Features"
           url: "#features"
         - name: "Docs"
-          url: "https://www.packager.co/docs"
+          url: "/docs"
     - name: ""
       url: "#"
       options:
         - name: "Docs"
-          url: "https://www.packager.co/docs"
+          url: "/docs"
     - name: ""
       url: ""
       options:
         - name: "Privacy"
-          url: "https://www.packager.co/privacy"
+          url: "/privacy"
         - name: "Terms"
-          url: "https://www.packager.co/termsofservice"
+          url: "/termsofservice"
   actions:
     - name: "Actions"
       url: "#"
       options:
         - name: "Dashboard"
-          url: "https://www.packager.co/login"
+          url: "/login"
           external: "true"
-  title: Packager
-  navigation: true
-
-- app: "Packager"
-- nav:
-  - name: "Home"
-    url: "#top"
-
-  - name: "Define"
-    url: "#define"
-
-  - name: "Branch"
-    url: "#branch"
-
-  - name: "Package"
-    url: "#package"
-
-  - name: "Release"
-    url: "#release"
-
-  - name: "Pricing"
-    url: "/pricing"
 
 - id: "top"
   class: "theme-bg-primary"
@@ -222,4 +202,4 @@
       class: "button-large"
       button:
         text: "Get Started!"
-        url: "https://www.packager.co/login"
+        url: "/login"
