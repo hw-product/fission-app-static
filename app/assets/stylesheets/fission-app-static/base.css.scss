@@ -31,8 +31,8 @@ $container-desktop:         940px + $grid-gutter-width;
 $container-md:              $container-desktop;
 $container-large-desktop:   1140px + $grid-gutter-width; // default is 1140
 
-@import "fission-app-static/fonts";
 @import "fission-app-static/theme";
+@import "fission-app-static/fonts";
 
 body {
   position: relative;
