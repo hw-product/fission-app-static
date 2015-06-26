@@ -1,3 +1,6 @@
+# v0.1.10
+* Update stylesheet file extensions
+
 # v0.1.8
 * Update root product content
 
