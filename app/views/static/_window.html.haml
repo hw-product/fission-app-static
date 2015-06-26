@@ -12,8 +12,8 @@
 
   %div.window-content
     - if content.has_key?("img")
-      %a{ "href" => content.img.src, "data-lightbox" => content.img.src }
-        %img{ src: content.img.src }
+      %a{ "href" => image_path(content.img.src), "data-lightbox" => image_path(content.img.src) }
+        = image_tag(content.img.src)
     - elsif content.has_key?("code")
       %div.window-body
         - if content.code.has_key?("markdown")
