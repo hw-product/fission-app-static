@@ -1,3 +1,6 @@
+# v0.1.12
+* Remove stylesheet loader calls
+
 # v0.1.10
 * Update stylesheet file extensions
 
