@@ -31,9 +31,6 @@ $container-desktop:         940px + $grid-gutter-width;
 $container-md:              $container-desktop;
 $container-large-desktop:   1140px + $grid-gutter-width; // default is 1140
 
-@import "bootstrap";
-@import "bootstrap-sprockets";
-@import "fission-app-static/normalize";
 @import "fission-app-static/fonts";
 @import "fission-app-static/theme";
 
@@ -91,3 +88,10 @@ text-muted {
 .navfix {
   padding-top: 0px !important;
 };
+
+@import "fission-app-static/button";
+@import "fission-app-static/code-snippet";
+@import "fission-app-static/highlighting";
+@import "fission-app-static/nav";
+@import "fission-app-static/quote";
+@import "fission-app-static/section";
