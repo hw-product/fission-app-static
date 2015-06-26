@@ -1,4 +1,4 @@
 - if not defined?(src)
   - if defined?(content)
     - src = content.img.src
-%img.img-responsive.center-block{ src: src }
+= image_url(src, :class => 'img-responsive center-block')
