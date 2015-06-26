@@ -19,6 +19,13 @@
 
         - name: "Deploy"
           url: "#deploy"
+  actions:
+    - name: "Actions"
+      url: "#"
+      options:
+        - name: "Dashboard"
+          url: "/login"
+
 
 - id: "top"
   class: "theme-bg-primary"

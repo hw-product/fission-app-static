@@ -31,7 +31,6 @@
       options:
         - name: "Dashboard"
           url: "/login"
-          external: "true"
 
 - id: "top"
   class: "theme-bg-primary"
@@ -112,7 +111,7 @@
       - layout: "window"
         width: "5"
         img:
-          src: "static-assets/images/github-releases.png"
+          src: "images/github-releases.png"
       - width: "7"
         lang: "shell"
         heading: "Your packages."
