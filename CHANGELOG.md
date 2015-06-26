@@ -1,3 +1,6 @@
+# v0.1.8
+* Update root product content
+
 # v0.1.6
 * Refactor static behavior
 
