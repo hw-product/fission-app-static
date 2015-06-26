@@ -60,21 +60,9 @@ class StaticPagesController < ApplicationController
           )
         )
       end
+      @site_style = 'fission-app-static'
       render 'static/display'
       true
-    end
-  end
-
-  def deliver_asset
-    item = "#{params[:path]}.#{params[:format]}"
-    file = Rails.application.config.settings.fetch(:static, :asset_paths, []).map do |root|
-      path = File.join(root, item)
-      path if File.exists?(path)
-    end.compact.first
-    if(file)
-      send_file file, :inline => true
-    else
-      raise ActionController::RoutingError.new('Not Found')
     end
   end
 
