@@ -1,7 +1,4 @@
 %div.section{ class: section["class"], id: section.id }
-  = stylesheet_link_tag "fission-app-static/section"
-  - if section.has_key?("stylesheet")
-    = stylesheet_link_tag section["stylesheet"]
   %div.container
     - if section.has_key?("data")
       = render :partial => "static/data", locals: { content: section.data }
