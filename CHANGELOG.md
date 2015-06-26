@@ -1,3 +1,6 @@
+# v0.1.14
+* It puts the assets on the pipeline or else it gets the hose again
+
 # v0.1.12
 * Remove stylesheet loader calls
 
