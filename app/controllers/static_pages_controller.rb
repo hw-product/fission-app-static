@@ -34,14 +34,13 @@ class StaticPagesController < ApplicationController
           unless(static_file_path(@product, path))
             @page = @product.static_pages_dataset.where(:path => path).first
             unless(@page)
-              flash[:error] = 'Page not found!'
-              redirect_to error_path
+              not_found!
             else
               content_for(:title, @page.title)
             end
           end
         else
-          redirect_to error_path
+          not_found!
         end
       end
     end
