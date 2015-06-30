@@ -1,3 +1,7 @@
+# v0.1.16
+* Style loading fixes
+* Use not_found helper
+
 # v0.1.14
 * It puts the assets on the pipeline or else it gets the hose again
 
