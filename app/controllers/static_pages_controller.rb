@@ -25,8 +25,7 @@ class StaticPagesController < ApplicationController
   def show
     respond_to do |format|
       format.js do
-        flash[:error] = 'Unknown request!'
-        javascript_redirect_to root_url
+        not_found!
       end
       format.html do
         if(@product)
