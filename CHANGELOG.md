@@ -1,3 +1,8 @@
+# v0.1.18
+* Content updates
+* Asset pipeline fixes
+* Replace redirects with not found on static catchall
+
 # v0.1.16
 * Style loading fixes
 * Use not_found helper
