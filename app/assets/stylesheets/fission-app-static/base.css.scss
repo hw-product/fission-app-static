@@ -89,6 +89,20 @@ text-muted {
   padding-top: 0px !important;
 };
 
+.content-link:hover {
+  text-decoration: none !important;
+};
+
+.disabled {
+  opacity: 0.5;
+};
+
+.takeout-icon {
+  min-height: 360px;
+  padding-top: 100px;
+  padding-bottom: 100px;
+};
+
 @import "fission-app-static/button";
 @import "fission-app-static/code-snippet";
 @import "fission-app-static/heading";

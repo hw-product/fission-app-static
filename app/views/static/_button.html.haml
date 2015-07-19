@@ -1,4 +1,4 @@
-%a.button{ href: content.button.url }
-  %span= content.button.text
-  - if content.button.icon
-    %i{ class: content.button.icon["class"] }
+%a.button{ href: content[:button][:url], class: content[:button][:class] || "" }
+  %span= content[:button][:text]
+  - if content[:button][:icon]
+    %i{ class: content[:button][:icon][:class] }

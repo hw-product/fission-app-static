@@ -3,7 +3,11 @@
     - if content.has_key?("data")
       = render :partial => "static/data", locals: { content: content.data }
     - else
-      = render :partial => "static/#{content.layout || "default"}", locals: { content: content }
+      - if content[:linked]
+        %a.content-link{ href: content[:linked][:url] }
+          = render :partial => "static/#{content.layout || "default"}", locals: { content: content }
+      - else
+        = render :partial => "static/#{content.layout || "default"}", locals: { content: content }
 
 - elsif content.kind_of?(Array)
   %div.row

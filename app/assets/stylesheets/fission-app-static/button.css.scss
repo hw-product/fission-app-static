@@ -24,3 +24,7 @@
 .button-large {
   font-size: 2.0em;
 };
+
+.button-disabled:hover {
+  cursor: not-allowed;
+};
