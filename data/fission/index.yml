@@ -146,14 +146,16 @@
         width: "7"
         items:
           - heading: "Packaging as a service. "
-          - subheading: "Describe your dependencies, commit, push, then...
-              <code>apt-get install</code> or <code>yum install</code>."
-          - "Tired of using configuration management to automate pulling source
-            & redundantly building your software (multiplied times N number of
-            nodes)? With the Short Order packaging service
-            (<strong>Packager.co</strong>) now you don't have to. Simply tell
-            Packager which platforms you need packages for and provide a list of
-            dependencies, and out comes a package (.deb or .rpm)."
+          - subheading: "Make installable packages, not
+            <text-muted>.</text-muted>war <text-muted>(files)</text-muted>."
+          - "If you're implementing solutions for installing software because
+            building system packages is too hard, stop. You know how to build
+            your software. You know your application's dependencies. Let
+            Packager do the rest."
+          - "You shouldn't need to use configuration management to fetch source
+            files and build binaries on every production node. If you're doing
+            this because making packages and maintaining a repository is too
+            hard, now you don't have to."
           - layout: "button"
             button:
               text: "Learn More"
@@ -161,10 +163,10 @@
 
     -
       - width: "7"
-        heading: "Test all the things."
+        heading: "Infrastructure testing as a service."
         class: "disabled"
-        subheading: "Full stack integration tests, on multiple architectures, as a
-          service."
+        subheading: "Full stack integration tests, on multiple architectures, as
+          a service."
         items:
           - "All the application testing in the world won't do any good if the
             infrastructure it is deployed onto hasn't been tested."
