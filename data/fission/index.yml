@@ -85,7 +85,7 @@
         linked:
           url: "#converge"
         icon:
-          class: "fa fa-code large-icon"
+          class: "octicon octicon-git-merge large-icon"
         items:
           - heading: "Converge."
           - "Integration testing, on multiple platforms. Because 'works on my
