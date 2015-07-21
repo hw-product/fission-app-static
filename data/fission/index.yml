@@ -8,14 +8,14 @@
         - name: "Home"
           url: "#top"
 
-        - name: "Build"
-          url: "#build"
+        - name: "Test"
+          url: "#test"
 
         - name: "Package"
           url: "#package"
 
-        - name: "Test"
-          url: "#test"
+        - name: "Converge"
+          url: "#converge"
 
         - name: "Provision"
           url: "#provision"
@@ -26,7 +26,6 @@
         - name: "Dashboard"
           url: "/login"
 
-
 - id: "top"
   class: "text-center theme-bg-primary"
   content:
@@ -36,7 +35,7 @@
         icon:
           class: "fa fa-inbox large-icon"
         items:
-          - subheading: "Place order here."
+          - subheading: "Order here."
 
       - heading: "What if software delivery was as simple as ordering takeout?"
         subheading: "Sofware delivery, made easy."
@@ -56,7 +55,7 @@
         icon:
           class: "fa fa-cutlery large-icon"
         items:
-          - subheading: "Pickup order here."
+          - subheading: "Pickup here."
 
 - id: "workflow"
   class: "theme-bg-alt"
@@ -64,11 +63,11 @@
     -
       - class: "text-center disabled"
         linked:
-          url: "#build"
+          url: "#test"
         icon:
-          class: "fa fa-code large-icon"
+          class: "fa fa-flask large-icon"
         items:
-          - heading: "Build."
+          - heading: "Test."
           - "Continuous integration without the continuous tinkering. Because CI
             should just work."
 
@@ -84,12 +83,12 @@
 
       - class: "text-center disabled"
         linked:
-          url: "#test"
+          url: "#converge"
         icon:
-          class: "fa fa-flask large-icon"
+          class: "fa fa-code large-icon"
         items:
-          - heading: "Test."
-          - "Convergence testing, on multiple platforms. Because 'works on my
+          - heading: "Converge."
+          - "Integration testing, on multiple platforms. Because 'works on my
             machine' isn't actually that funny."
 
       - class: "text-center disabled"
@@ -100,7 +99,7 @@
         items:
           - heading: "Provision."
           - "Don't just provision, scale. From a commit-hook. On AWS, Google
-            Cloud Platform, Rackspace, or your OpenStack-powered private-cloud."
+            Cloud Platform, Rackspace, or OpenStack."
 
 - id: "quote"
   class: "theme-bg-dark"
@@ -112,7 +111,7 @@
           - "Short Order is a standalone continuous provisioning platform, that
             provides all the <a href=#services>built-in services</a> needed to
             streamline how your business delivers software to your customers.
-            Short Order also allows you to register the tools and services
+            Short Order also allows you to connect the tools and services
             you're already using to compose new delivery pipelines."
       - columns: 2
         items:
@@ -171,11 +170,11 @@
   class: "theme-bg-primary"
   content:
     -
-      - id: "build"
+      - id: "test"
         width: "7"
         class: "disabled"
         items:
-          - heading: "Painless Automated Builds"
+          - heading: "Painless Automated CI"
           - subheading: "Because no one really likes <del>configuring</del>
               Jenkins."
           - items:
@@ -198,15 +197,47 @@
       - layout: "window"
         width: "5"
         class: "disabled"
-        img:
-          src: "http://placehold.it/600x400.png&text=(screenshot)"
+        code:
+          lang: "json"
+          snippet: |
+            {
+              "commands": [
+                "apt-get install -qy build-essential",
+                "gem install bundler --no-document",
+                "bundle install --path vendor",
+                "bundle exec ruby test/run.rb"
+              ]
+            }
 
     -
       - id: "test"
         width: "5"
         layout: "window"
-        img:
-          src: "http://placehold.it/600x400.png&text=(screenshot)"
+        code:
+          lang: "ruby"
+          snippet: |
+            Packager.build do
+              ubuntu do
+                target do
+                  platform 'ubuntu'
+                  version '14.04'
+                end
+                dependencies do
+                  runtime ['libc6']
+                end
+                build do
+                  name 'hw-redis'
+                  commands do
+                    build [
+                      'make distclean',
+                      'make',
+                      'make PREFIX=$PKG_DIR/usr/local install'
+                    ]
+                  end
+                end
+              end
+            end
+
       - id: "package"
         width: "7"
         items:
@@ -227,18 +258,17 @@
               url:  "https://www.packager.co"
 
     -
-      - width: "7"
+      - id: "converge"
+        width: "7"
         heading: "Infrastructure testing as a service."
         class: "disabled"
-        subheading: "Full stack integration tests, on multiple architectures, as
-          a service."
+        subheading: "Full stack integration tests, on multiple architectures."
         items:
           - "All the application testing in the world won't do any good if the
-            infrastructure it is deployed onto hasn't been tested."
-          - "How often are software bugs actually related to a missing
-            dependency, or a dependency conflict? How often are the 'works on my
-            machine' issues a result of a flaw in the application deployment
-            process?"
+            infrastructure it is deployed onto hasn't been tested. How often are
+            software bugs actually related to a missing dependency, or a
+            dependency conflict? How often are the 'works on my machine' issues
+            a result of a flaw in the application deployment process?"
           - "No <em>true</em> continuous delivery pipeline would be complete
             without automated tests, and those test couldn't be considered
             comprehensive enough to depend on without infrastructure testing."
@@ -251,28 +281,56 @@
       - layout: "window"
         width: "5"
         class: "disabled"
-        img:
-          src: "http://placehold.it/600x400.png&text=(screenshot)"
+        code:
+          lang: "shell"
+          snippet: |
+            Package "httpd"
+              should be installed
+
+            Service "httpd"
+              should be enabled
+              should be running
+
+            Port "80"
+              should be listening
+
+            Finished in 0.21091 seconds (files took 6.37 seconds to load)
+            4 examples, 0 failures
 
     -
-      - id: "deploy"
+      - id: "provision"
         layout: "window"
         width: "5"
         class: "disabled"
-        img:
-          src: "http://placehold.it/600x400.png&text=(screenshot)"
+        code:
+          lang: "ruby"
+          snippet: |
+            SparkleFormation.new(:infrastructure) do
+              nest!(:vpc)
+              nest!(:chef_server)
+              nest!(:load_balancers)
+              nest!(:datastore)
+              nest!(:application)
+            end
+
       - width: "7"
         class: "disabled"
-        heading: "Simplified full stack deployment."
-        subheading: "Make a change, <code>git commit</code>, <code>git
-          push</code>, refresh. Done."
+        heading: "Simplified full stack provisioning."
+        subheading: "Start a new development branch, get a new dev stack."
         items:
-          - "Remember when a web app meant deploying a web server and a database
-            server? Today's web app deployments have grown in complexity, a
-            challenge magnified by a healthy agile development process. Tools
-            like <a href='http://aws.amazon.com/cloudformation/'>AWS
-            CloudFormation</a> (CF) have helped to ease this pain, but
-            interacting with CF templates can present its own challenges."
+          - "Remember when deploying a web app meant configuring a web server
+            and a database server? Today's application deployments have grown in
+            complexity, a challenge magnified by a healthy agile development
+            process. Orchestration API templating solutions like <a
+            href='http://aws.amazon.com/cloudformation/'>AWS CloudFormation</a>
+            have helped to ease this pain, but maintaining <del>complex JSON
+            files</del> orchestration templates and manually interacting with
+            orchestration APIs can present their own challenges."
+          - "By describing your infrastructure as code using a mature Ruby DSL
+            and let the Short Order Stack Builder service automate the
+            provisioning <em>and</em> decomissioning of development, testing,
+            staging, and \"blue/green\" production environments. Provision on
+            AWS, Google Compute Platform, Rackspace, and/or OpenStack."
           - layout: "button"
             button:
               class: "button-disabled"
