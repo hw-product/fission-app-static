@@ -8,17 +8,17 @@
         - name: "Home"
           url: "#top"
 
-        - name: "Build"
-          url: "#build"
-
         - name: "Test"
           url: "#test"
 
         - name: "Package"
           url: "#package"
 
-        - name: "Deploy"
-          url: "#deploy"
+        - name: "Converge"
+          url: "#converge"
+
+        - name: "Provision"
+          url: "#provision"
   actions:
     - name: "Actions"
       url: "#"
@@ -26,57 +26,54 @@
         - name: "Dashboard"
           url: "/login"
 
-
 - id: "top"
-  class: "theme-bg-primary"
+  class: "text-center theme-bg-primary"
   content:
     -
-      - width: "7"
-        heading: "What's in your <text-muted>(software
-          delivery)</text-muted> pipe?"
+      - class: "text-center takeout-icon"
+        width: 3
+        icon:
+          class: "fa fa-inbox large-icon"
         items:
-          - subtitle: "The worlds first Composable Continuous Delivery
-              Platform."
-          - "Drop a config file in your code repository to trigger any number
-            of builds, application test(s), system packages, infrastructure
-            tests, AND deployment(s) to the cloud. There's even an API if you
-            need to integrate custom tasks into the pipeline."
-          - "What if shipping software wasn't so hard? What if you could plug
-            into a deployment pipeline that provided repeatable steps to get
-            from development to production without so much fuss? Now you can. We
-            call it a <strong>Composable Continuous Delivery Platform</strong>.
-            It's made up of individual services that you can combine to help
-            make shipping software less painful for your business."
+          - subheading: "Order here."
+
+      - heading: "What if software delivery was as simple as ordering takeout?"
+        subheading: "Sofware delivery, made easy."
+        width: 6
+        items:
+          - "Introducing Short Order - the worlds first <em>composable</em> continuous
+            provisioning platform. Configure made-to-order software delivery
+            pipelines in short order. Available as a service, on premise, or
+            even in industry-first hybrid configurations."
           - layout: "button"
             button:
-              text: "Smoke it."
-              url:  "#build"
-      - width: "5"
-        layout: "window"
-        img:
-          src: "http://placehold.it/320x240.png&text={hash}"
+              text: "Place your order"
+              url:  "#workflow"
+
+      - class: "text-center takeout-icon"
+        width: 3
+        icon:
+          class: "fa fa-cutlery large-icon"
+        items:
+          - subheading: "Pickup here."
 
 - id: "workflow"
   class: "theme-bg-alt"
   content:
     -
-      - class: "text-center"
-        icon:
-          class: "fa fa-code large-icon"
-        items:
-          - heading: "Build."
-          - "Continuous integration without the continuous tinkering. Because CI
-            should just work."
-
-      - class: "text-center"
+      - class: "text-center disabled"
+        linked:
+          url: "#test"
         icon:
           class: "fa fa-flask large-icon"
         items:
           - heading: "Test."
-          - "Convergence testing, on multiple platforms. Because 'works on my
-            machine' isn't actually that funny."
+          - "Continuous integration without the continuous tinkering. Because CI
+            should just work."
 
       - class: "text-center"
+        linked:
+          url: "#package"
         icon:
           class: "fa fa-gift large-icon"
         items:
@@ -84,23 +81,102 @@
           - "Lightweight packages that don't include the kitchen sink. Stop
             shipping dependencies. Just ship your software."
 
-      - class: "text-center"
+      - class: "text-center disabled"
+        linked:
+          url: "#converge"
+        icon:
+          class: "octicon octicon-git-merge large-icon"
+        items:
+          - heading: "Converge."
+          - "Integration testing, on multiple platforms. Because 'works on my
+            machine' isn't actually that funny."
+
+      - class: "text-center disabled"
+        linked:
+          url: "#provision"
         icon:
           class: "fa fa-cloud-upload large-icon"
         items:
-          - heading: "Deploy."
-          - "Don't deploy, scale. From a commit-hook. On AWS, Rackspace, or your
-            OpenStack-powered private-cloud."
+          - heading: "Provision."
+          - "Don't just provision, scale. From a commit-hook. On AWS, Google
+            Cloud Platform, Rackspace, or OpenStack."
 
-- id: "solution"
+- id: "quote"
+  class: "theme-bg-dark"
+  content:
+    - subheading: "Build Custom Software Delivery Pipelines in Minutes"
+      class: "text-center"
+    -
+      - items:
+          - "Short Order is a standalone continuous provisioning platform, that
+            provides all the <a href=#services>built-in services</a> needed to
+            streamline how your business delivers software to your customers.
+            Short Order also allows you to connect the tools and services
+            you're already using to compose new delivery pipelines."
+      - columns: 2
+        items:
+          - "By registering your existing services with Short Order, you can
+            create custom delivery pipelines in minutes."
+          -
+            - "GitHub / GitHub Enterprise"
+            - "BitBucket / Atlassian Stash"
+            - "Travis CI"
+            - "Jenkins"
+            - "Slack"
+            - "HipChat"
+            - "Nexus"
+            - "Artifactory"
+            - "Packagecloud"
+            - "More!"
+
+- id: "why"
+  class: "theme-bg-alt"
+  content:
+    - heading: "How it works"
+      class: "text-center"
+    -
+      - subheading: "Custom Workflows"
+        items:
+          - "Users select and configure pre-existing or custom pipelines -
+            automated series of steps to be performed every time specific types
+            of changes occur in a repository (e.g. commits, pull requests, tags,
+            etc)."
+
+      - subheading: "Configuration-based"
+        items:
+          - "There's no need to create individual pipelines for every one of
+            your various applications and/or development teams - Short Order
+            works by layering settings derived from configuration files in your
+            source code repositories on top of the default settings defined in
+            your delivery pipelines so that similar workflows can be shared
+            across projects and new teams can get onboarded quickly."
+
+    -
+      - subheading: "Always Connected"
+        items:
+          - "Short Order connects to your application and infrastructure source
+            code repositories and receives commit hooks whenever something
+            changes. Webhooks generated by source code repository events (e.g.
+            commits, pull requests, tags, etc) create jobs which are routed
+            through Short Order in the prescribed workflow."
+      - subheading: "Custom Services"
+        items:
+          - "External services can be registered with Short Order to connect
+            third-party applications like Jenkins CI or Travis CI to leverage
+            existing continuous integration jobs, or to connect to custom or
+            proprietary systems to fill gaps in the automation pipeline."
+
+- id: "services"
   class: "theme-bg-primary"
   content:
     -
-      - id: "build"
+      - id: "test"
         width: "7"
+        class: "disabled"
         items:
-          - heading: "Painless Automated Builds"
-          - subheading: "Because no one really likes <del>configuring</del> Jenkins."
+          - heading: "Painless Automated CI"
+          - subheading: "Because no one really likes <del>configuring</del>
+              Jenkins."
           - items:
             - "By definition, the word 'continuous' infers an unbroken stream;
               without interruption. In the context of <strong>continuous
@@ -108,77 +184,166 @@
               should be the developers workflow. Unfortunately, most CI tools
               introduce a significant interruption in workflow; requiring
               constant configuration and maintenance."
-            - "The DeployPipe CI service is called <strong>Nellie</strong>. It
-              allows you to trigger the execution of any number of arbitrary
-              builds and/or application tests via a simple DSL."
+            - "Short Order is designed to integrate with any CI service, but it
+              also provides its own solution called <strong>Nellie</strong>.
+              Nellie allows you to trigger the execution of any number of
+              arbitrary builds and/or application tests via a simple DSL."
+            - layout: "button"
+              button:
+                class: "button-disabled"
+                text: "Coming Soon"
+                url:  ""
 
       - layout: "window"
         width: "5"
-        img:
-          src: "http://placehold.it/500x500.png&text={example}"
+        class: "disabled"
+        code:
+          lang: "json"
+          snippet: |
+            {
+              "commands": [
+                "apt-get install -qy build-essential",
+                "gem install bundler --no-document",
+                "bundle install --path vendor",
+                "bundle exec ruby test/run.rb"
+              ]
+            }
 
     -
       - id: "test"
         width: "5"
         layout: "window"
-        img:
-          src: "http://placehold.it/500x500.png&text={example}"
-      - width: "7"
-        heading: "Test all the things."
-        subheading: "Full stack integration tests, on multiple architectures, as a
-          service."
-        items:
-          - "All the application testing in the world won't do any good if the
-            infrastructure it is deployed onto hasn't been tested."
-          - "How often are software bugs actually related to a missing
-            dependency, or a dependency conflict? How often are the 'works on my
-            machine' issues a result of a flaw in the application deployment
-            process?"
-          - "No <em>true</em> continuous delivery pipeline would be complete
-            without automated tests, and those test couldn't be considered
-            comprehensive enough to depend on without infrastructure testing."
-    -
+        code:
+          lang: "ruby"
+          snippet: |
+            Packager.build do
+              ubuntu do
+                target do
+                  platform 'ubuntu'
+                  version '14.04'
+                end
+                dependencies do
+                  runtime ['libc6']
+                end
+                build do
+                  name 'hw-redis'
+                  commands do
+                    build [
+                      'make distclean',
+                      'make',
+                      'make PREFIX=$PKG_DIR/usr/local install'
+                    ]
+                  end
+                end
+              end
+            end
+
       - id: "package"
         width: "7"
         items:
           - heading: "Packaging as a service. "
-          - subheading: "Describe your dependencies, commit, push, then...
-              <code>apt-get install</code> or <code>yum install</code>."
-          - "Tired of using configuration management to automate pulling source
-            & redundantly building your software (multiplied times N number of
-            nodes)? With the DeployPipe packaging service
-            (<strong>Packager.co</strong>) now you don't have to. Simply tell
-            Packager which platforms you need packages for and provide a list of
-            dependencies, and out comes a package (.deb or .rpm)."
+          - subheading: "Make installable packages, not
+            <text-muted>.</text-muted>war <text-muted>(files)</text-muted>."
+          - "If you're implementing solutions for installing software because
+            building system packages is too hard, stop. You know how to build
+            your software. You know your application's dependencies. Let
+            Packager do the rest."
+          - "You shouldn't need to use configuration management to fetch source
+            files and build binaries on every production node. If you're doing
+            this because making packages and maintaining a repository is too
+            hard, now you don't have to."
+          - layout: "button"
+            button:
+              text: "Learn More"
+              url:  "https://www.packager.co"
+
+    -
+      - id: "converge"
+        width: "7"
+        heading: "Infrastructure testing as a service."
+        class: "disabled"
+        subheading: "Full stack integration tests, on multiple architectures."
+        items:
+          - "All the application testing in the world won't do any good if the
+            infrastructure it is deployed onto hasn't been tested. How often are
+            software bugs actually related to a missing dependency, or a
+            dependency conflict? How often are the 'works on my machine' issues
+            a result of a flaw in the application deployment process?"
+          - "No <em>true</em> continuous delivery pipeline would be complete
+            without automated tests, and those test couldn't be considered
+            comprehensive enough to depend on without infrastructure testing."
+          - layout: "button"
+            button:
+              class: "button-disabled"
+              text: "Coming Soon"
+              url:  ""
 
       - layout: "window"
         width: "5"
-        img:
-          src: "http://placehold.it/500x500.png&text={example}"
+        class: "disabled"
+        code:
+          lang: "shell"
+          snippet: |
+            Package "httpd"
+              should be installed
+
+            Service "httpd"
+              should be enabled
+              should be running
+
+            Port "80"
+              should be listening
+
+            Finished in 0.21091 seconds (files took 6.37 seconds to load)
+            4 examples, 0 failures
 
     -
-      - id: "deploy"
+      - id: "provision"
         layout: "window"
         width: "5"
-        img:
-          src: "http://placehold.it/500x500.png&text={example}"
-      - items:
-          - heading: "Simplified full stack deployment."
-          - subheading: "Make a change, <code>git commit</code>, <code>git
-              push</code>, refresh. Done."
-          - "Remember when a web app meant deploying a web server and a database
-            server? Today's web app deployments have grown in complexity, a
-            challenge magnified by a healthy agile development process. Tools
-            like <a href='http://aws.amazon.com/cloudformation/'>AWS
-            CloudFormation</a> (CF) have helped to ease this pain, but
-            interacting with CF templates can present its own challenges."
+        class: "disabled"
+        code:
+          lang: "ruby"
+          snippet: |
+            SparkleFormation.new(:infrastructure) do
+              nest!(:vpc)
+              nest!(:chef_server)
+              nest!(:load_balancers)
+              nest!(:datastore)
+              nest!(:application)
+            end
+
+      - width: "7"
+        class: "disabled"
+        heading: "Simplified full stack provisioning."
+        subheading: "Start a new development branch, get a new dev stack."
+        items:
+          - "Remember when deploying a web app meant configuring a web server
+            and a database server? Today's application deployments have grown in
+            complexity, a challenge magnified by a healthy agile development
+            process. Orchestration API templating solutions like <a
+            href='http://aws.amazon.com/cloudformation/'>AWS CloudFormation</a>
+            have helped to ease this pain, but maintaining <del>complex JSON
+            files</del> orchestration templates and manually interacting with
+            orchestration APIs can present their own challenges."
+          - "By describing your infrastructure as code using a mature Ruby DSL
+            and let the Short Order Stack Builder service automate the
+            provisioning <em>and</em> decomissioning of development, testing,
+            staging, and \"blue/green\" production environments. Provision on
+            AWS, Google Compute Platform, Rackspace, and/or OpenStack."
+          - layout: "button"
+            button:
+              class: "button-disabled"
+              text: "Coming Soon"
+              url:  ""
 
 - id: "#signup"
   class: "text-center theme-bg-alt"
   content:
-    - heading: "Start your free trial <span class='under'>today</span>"
-    - subheading: "Sign-up in 60-seconds. Try it free for 14-days."
+    - heading: "Join the technical preview <underline>today</underline>."
+    - subheading: "Sign-up in 60-seconds. Try Short Order FREE for 30-days."
     - layout: "button"
+      class: "button-large"
       button:
-        text: "See plans & pricing"
-        url: "/pricing"
+        text: "Get Started"
+        url: "/login"
