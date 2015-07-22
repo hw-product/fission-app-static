@@ -1,3 +1,6 @@
+# v0.1.20
+* Short order content update
+
 # v0.1.18
 * Content updates
 * Asset pipeline fixes
