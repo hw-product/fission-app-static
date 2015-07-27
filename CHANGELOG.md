@@ -1,3 +1,6 @@
+# v0.1.22
+* [fix] Update root product name in static nav to short order
+
 # v0.1.20
 * Short order content update
 
