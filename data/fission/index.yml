@@ -255,7 +255,7 @@
           - layout: "button"
             button:
               text: "Learn More"
-              url:  "https://www.packager.co"
+              url:  "https://packager.shortorder.io"
 
     -
       - id: "converge"
