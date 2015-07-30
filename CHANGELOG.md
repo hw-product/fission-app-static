@@ -1,3 +1,6 @@
+#v 0.1.24
+* Packager DNS usage update
+
 # v0.1.22
 * [fix] Update root product name in static nav to short order
 
