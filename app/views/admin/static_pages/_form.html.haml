@@ -20,6 +20,9 @@
       %div.form-group
         = label_tag(:page_product_id)
         = select_tag(:page_product_id, options_for_select(Hash[products.map{|p| [p.name, p.id]}], page.fetch(:product_id, params[:product_id])), :class => 'form-control')
+      %div.from-group
+        = label_tag(:page_redirect_url)
+        = text_field_tag :page_redirect_url, page[:redirect_url], :class => 'form-control'
       %div.form-group
         = label_tag(:page_title)
         = text_field_tag :page_title, page[:title], :class => 'form-control'

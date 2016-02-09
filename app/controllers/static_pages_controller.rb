@@ -35,7 +35,11 @@ class StaticPagesController < ApplicationController
             unless(@page)
               not_found!
             else
-              content_for(:title, @page.title)
+              if(@page.redirect_url)
+                redirect_to @page.redirect_url
+              else
+                content_for(:title, @page.title)
+              end
             end
           end
         else
